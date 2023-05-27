@@ -13,7 +13,7 @@ namespace BTLCSharpxSql
     internal class connect
     {
         //chuỗi kết nối
-        private static string stringConncect = @"Data Source=HUYBU;Initial Catalog=QuanLyBanHang;Persist Security Info=True;User ID=sa";
+        private static string stringConncect = @"Data Source=HUYBU;Initial Catalog=QuanLyBanHang;Integrated Security=True";
         //kết nối mở csdl
         public static SqlConnection GetConnection()
         {

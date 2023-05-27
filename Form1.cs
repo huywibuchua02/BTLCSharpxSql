@@ -15,6 +15,8 @@ namespace BTLCSharpxSql
     {
         Modify modify;
         QLyMathang qLyMathang;
+        string chuoiketnoi = @"Data Source=HUYBU;Initial Catalog=QuanLyBanHang;Integrated Security=True";
+
         public Form1()
         {
             InitializeComponent();
@@ -22,15 +24,15 @@ namespace BTLCSharpxSql
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             modify = new Modify();
+            //đổ dữu liệu
             try
             {
                 dataGridView1.DataSource = modify.getAllMatHang();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

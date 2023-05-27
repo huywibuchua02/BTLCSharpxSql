@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BTLCSharpxSql", "BTLCSharpxSql.csproj", "{DDA6BDB9-C872-462F-8ED1-4AEE12538AC6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LamLaiBTL", "..\LamLaiBTL\LamLaiBTL.csproj", "{B9253EB4-A207-4DAF-98F5-202F311B0E2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DDA6BDB9-C872-462F-8ED1-4AEE12538AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDA6BDB9-C872-462F-8ED1-4AEE12538AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDA6BDB9-C872-462F-8ED1-4AEE12538AC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9253EB4-A207-4DAF-98F5-202F311B0E2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9253EB4-A207-4DAF-98F5-202F311B0E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9253EB4-A207-4DAF-98F5-202F311B0E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9253EB4-A207-4DAF-98F5-202F311B0E2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
