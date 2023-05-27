@@ -53,7 +53,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MatHang\mathang.cs" />
+    <Compile Include="MatHang\QLyMathang.cs" />
+    <Compile Include="MatHang\Modify.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -84,6 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\320344.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\af1174b6162882c5c3d0fd6ea3d18de4.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

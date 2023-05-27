@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BTLCSharpxSql.MatHang;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace BTLCSharpxSql
 {
     public partial class Form1 : Form
     {
+        Modify modify;
+        QLyMathang qLyMathang;
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +22,16 @@ namespace BTLCSharpxSql
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
+            modify = new Modify();
+            try
+            {
+                dataGridView1.DataSource = modify.getAllMatHang();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi: ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -47,7 +59,7 @@ namespace BTLCSharpxSql
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }

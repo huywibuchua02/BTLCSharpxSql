@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BTLCSharpxSql.MatHang
 {
-    internal class mathang
+    internal class QLyMathang
     {
         private string maHang;
         private string tenHang;
@@ -17,11 +17,11 @@ namespace BTLCSharpxSql.MatHang
         private string donviTinh;
         private SqlMoney giaHang;
 
-        public mathang()
+        public QLyMathang()
         {
         }
 
-        public mathang(string maHang, string tenHang, string maCongTy, string maloaihang,
+        public QLyMathang(string maHang, string tenHang, string maCongTy, string maloaihang,
                         int soluong, string donviTinh, SqlMoney giaHang)
         {
             this.maHang = maHang;
