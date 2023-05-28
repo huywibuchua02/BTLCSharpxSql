@@ -46,8 +46,8 @@ namespace BTLCSharpxSql.FLoaiHang
             {
                 sqlConnection.Open();
                 sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.Add("@maloaihang", SqlDbType.Int).Value = loaiHang.MaLoaiHang;
-                sqlCommand.Parameters.Add("@tenloaihang", SqlDbType.NVarChar).Value = loaiHang.TenLoaiHang;
+                sqlCommand.Parameters.Add("@maloaihang", SqlDbType.Int).Value = qLloaiHang.Maloaihang;
+                sqlCommand.Parameters.Add("@tenloaihang", SqlDbType.NVarChar).Value = qLloaiHang.Tenloaihang;
                 sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
             }
             catch

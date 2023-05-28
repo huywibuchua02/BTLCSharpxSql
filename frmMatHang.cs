@@ -50,7 +50,13 @@ namespace BTLCSharpxSql.FMatHang
             string tenhang = this.textBox_tenH.Text;
             string maCongTy = this.textBox_MaCTY.Text;
             string maLoaiHang = this.textBox_maLH.Text;
-            int soLuong = Convert.ToInt32(this.textBox_soLuong.Text);
+/*            int soLuong = Convert.ToInt32(this.textBox_soLuong.Text);*/
+            int soLuong;
+            if (!int.TryParse(this.textBox_soLuong.Text, out soLuong))
+            {
+                MessageBox.Show("Số lượng không hợp lệ. Vui lòng nhập một số nguyên.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             string donViTinh = this.textBox_DVT.Text;
             SqlMoney giaHang = SqlMoney.Parse(this.textBox_gia.Text);
             qLmatHang = new QLmatHang(mahang, tenhang, maCongTy, maLoaiHang, soLuong, donViTinh, giaHang);
