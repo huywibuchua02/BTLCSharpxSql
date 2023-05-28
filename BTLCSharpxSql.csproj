@@ -203,11 +203,41 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmChiTietDatHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChiTietDatHang.Designer.cs">
+      <DependentUpon>frmChiTietDatHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDonDatHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDonDatHang.Designer.cs">
+      <DependentUpon>frmDonDatHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKhachHang.Designer.cs">
+      <DependentUpon>frmKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMatHang.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMatHang.Designer.cs">
       <DependentUpon>frmMatHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhaCungCap.Designer.cs">
+      <DependentUpon>frmNhaCungCap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhanVien.Designer.cs">
+      <DependentUpon>frmNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="libDB.cs" />
     <Compile Include="MatHang\QLyMathang.cs" />
@@ -227,6 +257,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="QLmatHang.cs" />
+    <EmbeddedResource Include="frmChiTietDatHang.resx">
+      <DependentUpon>frmChiTietDatHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDonDatHang.resx">
+      <DependentUpon>frmDonDatHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKhachHang.resx">
+      <DependentUpon>frmKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLoaiHang.resx">
       <DependentUpon>frmLoaiHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,6 +274,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMatHang.resx">
       <DependentUpon>frmMatHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNhaCungCap.resx">
+      <DependentUpon>frmNhaCungCap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNhanVien.resx">
+      <DependentUpon>frmNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -10,118 +10,74 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-
 namespace BTLCSharpxSql
 {
     public partial class frmMatHang : Form
     {
         Modify modify;
         QLmatHang qLmatHang;
- //       libDB lib;
-        connect cn = new connect(); //Khai báo biến cn kiểu Connect
-        string chuoiketnoi = @"Data Source=HUYBU;Initial Catalog=QuanLyBanHang;Integrated Security=True";
+        connect cn = new connect(); // Khai báo biến cn kiểu Connect
+        string chuoiketnoi = @"Data Source=HUYBU;Initial Catalog=BanHang;Integrated Security=True";
 
         public frmMatHang()
         {
             InitializeComponent();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            modify = new Modify();
         }
 
         private void frmMatHang_Load(object sender, EventArgs e)
         {
+            LoadMatHangData();
+        }
+
+        private void LoadMatHangData()
+        {
+            try
             {
-                modify = new Modify();
-
-                //đổ dữu liệu
-                try
-                {
-                    dataGridView1.DataSource = modify.getAllMatHang();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                dataGridView1.DataSource = modify.getAllMatHang();
             }
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_sl_TextChanged(object sender, EventArgs e)
-        {
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button_them_Click(object sender, EventArgs e)
         {
-            // lấy tất cả dữ liệu đã nhập xuống:
-            // Nên check lỗi người dùng nhập! => nếu mà lỗi thì return;
-            string mahang = this.textBox_maH.Text;
-            string tenhang = this.textBox_tenH.Text;
-            string maCongTy = this.textBox_MaCTY.Text;
-            string maLoaiHang = this.textBox_maLH.Text;
-            int soLuong = Convert.ToInt32(this.textBox_soLuong.Text);
-            string donViTinh = this.textBox_DVT.Text;
-            SqlMoney giaHang = SqlMoney.Parse(this.textBox_gia.Text);
+            string mahang = textBox_maH.Text;
+            string tenhang = textBox_tenH.Text;
+            string maCongTy = textBox_MaCTY.Text;
+            string maLoaiHang = textBox_maLH.Text;
+            int soLuong = 0;
+            int.TryParse(textBox_soLuong.Text, out soLuong);
+            string donViTinh = textBox_DVT.Text;
+            decimal giaHang = 0;
+            decimal.TryParse(textBox_gia.Text, out giaHang);
+
             qLmatHang = new QLmatHang(mahang, tenhang, maCongTy, maLoaiHang, soLuong, donViTinh, giaHang);
 
-
-
-            // tao demo thực hiện proceduce - chuỗi k phải sql nữa mà là tên proceduce
-            // chuẩn bị tên proceduce:
-            string query = "sp_mathang_Insert";
-            // new đối tượng thư viên để gọi các hàm trong thư viện:
-            libDB lib = new libDB(chuoiketnoi);
-            SqlCommand cmd = lib.GetCmd(query); // lấy về đối tượng sqlcomman
-
-            // Cần phải truyền dũ liệu cho cmd 
-            truyenParameterMatHang(ref cmd, qLmatHang);
-
-
-            // thực hiện proceduce bằng cách là gọi  thư viên
-            try
+            if (modify.Update(qLmatHang))
             {
-                // đây là câu lệnh thêm nên 
-                int kq = lib.RunSQL(cmd);
-                if (kq > 0)
-                {
-                    MessageBox.Show("thêm thành công!");
-                    frmMatHang_Load(sender, e);
-                    xoaThongTin();
-                }
+                LoadMatHangData();
+                MessageBox.Show("Thêm thành công!");
+                ClearInputFields();
             }
-            catch (Exception ex)
+            else
             {
-
-                MessageBox.Show(ex.Message, "lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-
+                MessageBox.Show("Không thêm được!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-        private void xoaThongTin()
+        private void ClearInputFields()
         {
-
+            textBox_maH.Text = "";
+            textBox_tenH.Text = "";
+            textBox_MaCTY.Text = "";
+            textBox_maLH.Text = "";
+            textBox_soLuong.Text = "";
+            textBox_DVT.Text = "";
+            textBox_gia.Text = "";
         }
 
-        private void truyenParameterMatHang(ref SqlCommand cmd, QLmatHang qLmatHang)
-        {
-
-            cmd.Parameters.Add("@mahang", SqlDbType.NVarChar).Value = qLmatHang.MaHang;
-            cmd.Parameters.Add("@tenhang", SqlDbType.NVarChar).Value = qLmatHang.TenHang;
-            cmd.Parameters.Add("@macongty", SqlDbType.NVarChar).Value = qLmatHang.MaCongTy;
-            cmd.Parameters.Add("@maloaihang", SqlDbType.NVarChar).Value = qLmatHang.Maloaihang;
-            cmd.Parameters.Add("@soluong", SqlDbType.Int).Value = qLmatHang.Soluong;
-            cmd.Parameters.Add("@donvitinh", SqlDbType.NVarChar).Value = qLmatHang.DonviTinh;
-            cmd.Parameters.Add("@giahang", SqlDbType.Money).Value = qLmatHang.GiaHang;
-        }
     }
 }

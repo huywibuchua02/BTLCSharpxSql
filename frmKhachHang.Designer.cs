@@ -1,6 +1,6 @@
 ﻿namespace BTLCSharpxSql
 {
-    partial class frmLoaiHang
+    partial class frmKhachHang
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // frmLoaiHang
+            // frmKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "frmLoaiHang";
-            this.Text = "Loại Hàng";
-            this.Load += new System.EventHandler(this.fmLoaiHang_Load);
+            this.Name = "frmKhachHang";
+            this.Text = "frmKhachHang";
+            this.Load += new System.EventHandler(this.frmKhachHang_Load);
             this.ResumeLayout(false);
 
         }

@@ -11,87 +11,81 @@ namespace BTLCSharpxSql
 {
     internal class Modify
     {
-        SqlDataAdapter dataAdapter;//truy xuat du lieu vao bang
-        SqlCommand sqlCommand;//truy vấn cập nhật tới csdl
+        SqlDataAdapter dataAdapter; // Truy xuất dữ liệu vào bảng
+        SqlCommand sqlCommand; // Truy vấn cập nhật tới CSDL
+
         public Modify()
         {
         }
-        //dataset: trả về nhiều bảng
-        //dataTable: trả về một bảng
-        public DataTable getAllMatHang()
+
+        // Lấy tất cả mặt hàng
+        public DataTable GetAllMatHang()
         {
             DataTable dataTable = new DataTable();
-            string query = "select * from mathang";
+            string query = "SELECT * FROM mathang";
             using (SqlConnection sqlConnection = connect.GetConnection())
             {
-                sqlConnection.Open();//mở kết nối
+                sqlConnection.Open(); // Mở kết nối
 
                 dataAdapter = new SqlDataAdapter(query, sqlConnection);
-                //truy xuất 
+                // Truy xuất
                 dataAdapter.Fill(dataTable);
 
                 sqlConnection.Close();
             }
             return dataTable;
         }
+
+        // Cập nhật thông tin mặt hàng
         public bool Update(QLmatHang qLmatHang)
         {
-            SqlConnection sqlConnection = connect.GetConnection();
+            using (SqlConnection sqlConnection = connect.GetConnection())
+            {
+                string query = "UPDATE mathang SET tenhang = @tenhang, macongty = @macongty, maloaihang = @maloaihang, soluong = @soluong, " +
+                               "donvitinh = @donvitinh, giahang = @giahang WHERE mahang = @mahang;";
 
-            string query = "update mathang set tenhang = @tenhang,macongty = @macongty,maloaihang = @maloaihang,soluong = @soluong," +
-                "donvitinh = @donvitinh,giahang = @giahang WHERE mahang = @mahang;";
-
-            //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
-            try
-            {
-                sqlConnection.Open();
-                sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.Add("@mahang", SqlDbType.NVarChar).Value = qLmatHang.MaHang;
-                sqlCommand.Parameters.Add("@tenhang", SqlDbType.NVarChar).Value = qLmatHang.TenHang;
-                sqlCommand.Parameters.Add("@macongty", SqlDbType.NVarChar).Value = qLmatHang.Soluong;
-                sqlCommand.Parameters.Add("@maloaihang", SqlDbType.NVarChar).Value = qLmatHang.Maloaihang;
-                sqlCommand.Parameters.Add("@soluong", SqlDbType.Int).Value = qLmatHang.Soluong;
-                sqlCommand.Parameters.Add("@donvitinh", SqlDbType.NVarChar).Value = qLmatHang.DonviTinh;
-                sqlCommand.Parameters.Add("@giahang", SqlDbType.Money).Value = qLmatHang.GiaHang;
-                sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
+                try
+                {
+                    sqlConnection.Open();
+                    sqlCommand = new SqlCommand(query, sqlConnection);
+                    sqlCommand.Parameters.Add("@mahang", SqlDbType.NVarChar).Value = qLmatHang.MaHang;
+                    sqlCommand.Parameters.Add("@tenhang", SqlDbType.NVarChar).Value = qLmatHang.TenHang;
+                    sqlCommand.Parameters.Add("@macongty", SqlDbType.NVarChar).Value = qLmatHang.MaCongTy;
+                    sqlCommand.Parameters.Add("@maloaihang", SqlDbType.NVarChar).Value = qLmatHang.Maloaihang;
+                    sqlCommand.Parameters.Add("@soluong", SqlDbType.Int).Value = qLmatHang.Soluong;
+                    sqlCommand.Parameters.Add("@donvitinh", SqlDbType.NVarChar).Value = qLmatHang.DonviTinh;
+                    sqlCommand.Parameters.Add("@giahang", SqlDbType.Money).Value = qLmatHang.GiaHang;
+                    sqlCommand.ExecuteNonQuery(); // Thực thi lệnh truy vấn
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
-            catch
-            {
-                return false;
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-            return true;
         }
 
-
-
+        // Xóa mặt hàng
         public bool Delete(string mahang)
         {
-            SqlConnection sqlConnection = connect.GetConnection();
-
-            string query = "delete mathang where mahang=@mahang";
-
-            //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
-            try
+            using (SqlConnection sqlConnection = connect.GetConnection())
             {
-                sqlConnection.Open();
-                sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.Add("@mahang", SqlDbType.NVarChar).Value = mahang;
+                string query = "DELETE FROM mathang WHERE mahang=@mahang";
 
-                sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
+                try
+                {
+                    sqlConnection.Open();
+                    sqlCommand = new SqlCommand(query, sqlConnection);
+                    sqlCommand.Parameters.Add("@mahang", SqlDbType.NVarChar).Value = mahang;
+
+                    sqlCommand.ExecuteNonQuery(); // Thực thi lệnh truy vấn
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
-            catch
-            {
-                return false;
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-            return true;
         }
     }
 }

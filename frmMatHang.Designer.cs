@@ -88,7 +88,6 @@
             this.label4.Size = new System.Drawing.Size(23, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Giá";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -143,7 +142,6 @@
             this.textBox_soLuong.Name = "textBox_soLuong";
             this.textBox_soLuong.Size = new System.Drawing.Size(76, 20);
             this.textBox_soLuong.TabIndex = 9;
-            this.textBox_soLuong.TextChanged += new System.EventHandler(this.txt_sl_TextChanged);
             // 
             // textBox_gia
             // 
@@ -210,15 +208,18 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(9, 167);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(852, 398);
             this.dataGridView1.TabIndex = 17;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // frmMatHang
             // 
