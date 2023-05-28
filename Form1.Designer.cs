@@ -52,7 +52,7 @@
             this.panel_Left.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_Left.Location = new System.Drawing.Point(0, 0);
             this.panel_Left.Name = "panel_Left";
-            this.panel_Left.Size = new System.Drawing.Size(200, 668);
+            this.panel_Left.Size = new System.Drawing.Size(200, 709);
             this.panel_Left.TabIndex = 0;
             // 
             // panel_Top
@@ -62,7 +62,7 @@
             this.panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_Top.Location = new System.Drawing.Point(200, 0);
             this.panel_Top.Name = "panel_Top";
-            this.panel_Top.Size = new System.Drawing.Size(826, 100);
+            this.panel_Top.Size = new System.Drawing.Size(963, 100);
             this.panel_Top.TabIndex = 1;
             // 
             // panel_Body
@@ -72,7 +72,7 @@
             this.panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Body.Location = new System.Drawing.Point(200, 100);
             this.panel_Body.Name = "panel_Body";
-            this.panel_Body.Size = new System.Drawing.Size(826, 568);
+            this.panel_Body.Size = new System.Drawing.Size(963, 609);
             this.panel_Body.TabIndex = 2;
             // 
             // label1
@@ -119,7 +119,7 @@
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.BackgroundImage = global::BTLCSharpxSql.Properties.Resources.loi_ich_thiet_ke_web;
-            this.pictureBox2.Location = new System.Drawing.Point(67, 85);
+            this.pictureBox2.Location = new System.Drawing.Point(135, 105);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(677, 334);
             this.pictureBox2.TabIndex = 1;
@@ -141,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1026, 668);
+            this.ClientSize = new System.Drawing.Size(1163, 709);
             this.Controls.Add(this.panel_Body);
             this.Controls.Add(this.panel_Top);
             this.Controls.Add(this.panel_Left);

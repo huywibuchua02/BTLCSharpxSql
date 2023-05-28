@@ -83,6 +83,16 @@ namespace BTLCSharpxSql.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap da4e096d269bf8c5a18a {
+            get {
+                object obj = ResourceManager.GetObject("da4e096d269bf8c5a18a", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap huy {
             get {
                 object obj = ResourceManager.GetObject("huy", resourceCulture);

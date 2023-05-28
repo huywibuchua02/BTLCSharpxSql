@@ -43,5 +43,15 @@ namespace BTLCSharpxSql
                 }
             }
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_sl_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
