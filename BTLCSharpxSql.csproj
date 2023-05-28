@@ -209,6 +209,7 @@
     <Compile Include="frmMatHang.Designer.cs">
       <DependentUpon>frmMatHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="libDB.cs" />
     <Compile Include="MatHang\QLyMathang.cs" />
     <Compile Include="MatHang\Modify.cs" />
     <Compile Include="frmLoaiHang.cs">

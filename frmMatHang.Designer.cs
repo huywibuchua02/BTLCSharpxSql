@@ -35,13 +35,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txt_mahang = new System.Windows.Forms.TextBox();
-            this.txt_tenhang = new System.Windows.Forms.TextBox();
-            this.txt_sl = new System.Windows.Forms.TextBox();
-            this.txt_gia = new System.Windows.Forms.TextBox();
-            this.txt_mloaihang = new System.Windows.Forms.TextBox();
-            this.txt_mcongty = new System.Windows.Forms.TextBox();
-            this.txt_dvt = new System.Windows.Forms.TextBox();
+            this.textBox_maH = new System.Windows.Forms.TextBox();
+            this.textBox_tenH = new System.Windows.Forms.TextBox();
+            this.textBox_soLuong = new System.Windows.Forms.TextBox();
+            this.textBox_gia = new System.Windows.Forms.TextBox();
+            this.textBox_maLH = new System.Windows.Forms.TextBox();
+            this.textBox_MaCTY = new System.Windows.Forms.TextBox();
+            this.textBox_DVT = new System.Windows.Forms.TextBox();
             this.button_them = new System.Windows.Forms.Button();
             this.button_sua = new System.Windows.Forms.Button();
             this.button_xoa = new System.Windows.Forms.Button();
@@ -120,77 +120,78 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Đơn vị tính:";
             // 
-            // txt_mahang
+            // textBox_maH
             // 
-            this.txt_mahang.Location = new System.Drawing.Point(106, 23);
-            this.txt_mahang.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txt_mahang.Name = "txt_mahang";
-            this.txt_mahang.Size = new System.Drawing.Size(76, 20);
-            this.txt_mahang.TabIndex = 7;
+            this.textBox_maH.Location = new System.Drawing.Point(106, 23);
+            this.textBox_maH.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_maH.Name = "textBox_maH";
+            this.textBox_maH.Size = new System.Drawing.Size(76, 20);
+            this.textBox_maH.TabIndex = 7;
             // 
-            // txt_tenhang
+            // textBox_tenH
             // 
-            this.txt_tenhang.Location = new System.Drawing.Point(106, 51);
-            this.txt_tenhang.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txt_tenhang.Name = "txt_tenhang";
-            this.txt_tenhang.Size = new System.Drawing.Size(76, 20);
-            this.txt_tenhang.TabIndex = 8;
+            this.textBox_tenH.Location = new System.Drawing.Point(106, 51);
+            this.textBox_tenH.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_tenH.Name = "textBox_tenH";
+            this.textBox_tenH.Size = new System.Drawing.Size(76, 20);
+            this.textBox_tenH.TabIndex = 8;
             // 
-            // txt_sl
+            // textBox_soLuong
             // 
-            this.txt_sl.Location = new System.Drawing.Point(106, 82);
-            this.txt_sl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txt_sl.Name = "txt_sl";
-            this.txt_sl.Size = new System.Drawing.Size(76, 20);
-            this.txt_sl.TabIndex = 9;
-            this.txt_sl.TextChanged += new System.EventHandler(this.txt_sl_TextChanged);
+            this.textBox_soLuong.Location = new System.Drawing.Point(106, 82);
+            this.textBox_soLuong.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_soLuong.Name = "textBox_soLuong";
+            this.textBox_soLuong.Size = new System.Drawing.Size(76, 20);
+            this.textBox_soLuong.TabIndex = 9;
+            this.textBox_soLuong.TextChanged += new System.EventHandler(this.txt_sl_TextChanged);
             // 
-            // txt_gia
+            // textBox_gia
             // 
-            this.txt_gia.Location = new System.Drawing.Point(106, 121);
-            this.txt_gia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txt_gia.Name = "txt_gia";
-            this.txt_gia.Size = new System.Drawing.Size(76, 20);
-            this.txt_gia.TabIndex = 10;
+            this.textBox_gia.Location = new System.Drawing.Point(106, 121);
+            this.textBox_gia.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_gia.Name = "textBox_gia";
+            this.textBox_gia.Size = new System.Drawing.Size(76, 20);
+            this.textBox_gia.TabIndex = 10;
             // 
-            // txt_mloaihang
+            // textBox_maLH
             // 
-            this.txt_mloaihang.Location = new System.Drawing.Point(362, 23);
-            this.txt_mloaihang.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txt_mloaihang.Name = "txt_mloaihang";
-            this.txt_mloaihang.Size = new System.Drawing.Size(76, 20);
-            this.txt_mloaihang.TabIndex = 11;
+            this.textBox_maLH.Location = new System.Drawing.Point(362, 23);
+            this.textBox_maLH.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_maLH.Name = "textBox_maLH";
+            this.textBox_maLH.Size = new System.Drawing.Size(76, 20);
+            this.textBox_maLH.TabIndex = 11;
             // 
-            // txt_mcongty
+            // textBox_MaCTY
             // 
-            this.txt_mcongty.Location = new System.Drawing.Point(362, 58);
-            this.txt_mcongty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txt_mcongty.Name = "txt_mcongty";
-            this.txt_mcongty.Size = new System.Drawing.Size(76, 20);
-            this.txt_mcongty.TabIndex = 12;
+            this.textBox_MaCTY.Location = new System.Drawing.Point(362, 58);
+            this.textBox_MaCTY.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_MaCTY.Name = "textBox_MaCTY";
+            this.textBox_MaCTY.Size = new System.Drawing.Size(76, 20);
+            this.textBox_MaCTY.TabIndex = 12;
             // 
-            // txt_dvt
+            // textBox_DVT
             // 
-            this.txt_dvt.Location = new System.Drawing.Point(362, 96);
-            this.txt_dvt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txt_dvt.Name = "txt_dvt";
-            this.txt_dvt.Size = new System.Drawing.Size(76, 20);
-            this.txt_dvt.TabIndex = 13;
+            this.textBox_DVT.Location = new System.Drawing.Point(362, 96);
+            this.textBox_DVT.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_DVT.Name = "textBox_DVT";
+            this.textBox_DVT.Size = new System.Drawing.Size(76, 20);
+            this.textBox_DVT.TabIndex = 13;
             // 
             // button_them
             // 
             this.button_them.Location = new System.Drawing.Point(551, 23);
-            this.button_them.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_them.Margin = new System.Windows.Forms.Padding(2);
             this.button_them.Name = "button_them";
             this.button_them.Size = new System.Drawing.Size(56, 33);
             this.button_them.TabIndex = 14;
             this.button_them.Text = "Thêm";
             this.button_them.UseVisualStyleBackColor = true;
+            this.button_them.Click += new System.EventHandler(this.button_them_Click);
             // 
             // button_sua
             // 
             this.button_sua.Location = new System.Drawing.Point(551, 71);
-            this.button_sua.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_sua.Margin = new System.Windows.Forms.Padding(2);
             this.button_sua.Name = "button_sua";
             this.button_sua.Size = new System.Drawing.Size(56, 31);
             this.button_sua.TabIndex = 15;
@@ -200,7 +201,7 @@
             // button_xoa
             // 
             this.button_xoa.Location = new System.Drawing.Point(551, 115);
-            this.button_xoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_xoa.Margin = new System.Windows.Forms.Padding(2);
             this.button_xoa.Name = "button_xoa";
             this.button_xoa.Size = new System.Drawing.Size(56, 31);
             this.button_xoa.TabIndex = 16;
@@ -211,7 +212,7 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(9, 167);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -228,13 +229,13 @@
             this.Controls.Add(this.button_xoa);
             this.Controls.Add(this.button_sua);
             this.Controls.Add(this.button_them);
-            this.Controls.Add(this.txt_dvt);
-            this.Controls.Add(this.txt_mcongty);
-            this.Controls.Add(this.txt_mloaihang);
-            this.Controls.Add(this.txt_gia);
-            this.Controls.Add(this.txt_sl);
-            this.Controls.Add(this.txt_tenhang);
-            this.Controls.Add(this.txt_mahang);
+            this.Controls.Add(this.textBox_DVT);
+            this.Controls.Add(this.textBox_MaCTY);
+            this.Controls.Add(this.textBox_maLH);
+            this.Controls.Add(this.textBox_gia);
+            this.Controls.Add(this.textBox_soLuong);
+            this.Controls.Add(this.textBox_tenH);
+            this.Controls.Add(this.textBox_maH);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -242,7 +243,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMatHang";
             this.Text = "frmMatHang";
             this.Load += new System.EventHandler(this.frmMatHang_Load);
@@ -261,13 +262,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txt_mahang;
-        private System.Windows.Forms.TextBox txt_tenhang;
-        private System.Windows.Forms.TextBox txt_sl;
-        private System.Windows.Forms.TextBox txt_gia;
-        private System.Windows.Forms.TextBox txt_mloaihang;
-        private System.Windows.Forms.TextBox txt_mcongty;
-        private System.Windows.Forms.TextBox txt_dvt;
+        private System.Windows.Forms.TextBox textBox_maH;
+        private System.Windows.Forms.TextBox textBox_tenH;
+        private System.Windows.Forms.TextBox textBox_soLuong;
+        private System.Windows.Forms.TextBox textBox_gia;
+        private System.Windows.Forms.TextBox textBox_maLH;
+        private System.Windows.Forms.TextBox textBox_MaCTY;
+        private System.Windows.Forms.TextBox textBox_DVT;
         private System.Windows.Forms.Button button_them;
         private System.Windows.Forms.Button button_sua;
         private System.Windows.Forms.Button button_xoa;
