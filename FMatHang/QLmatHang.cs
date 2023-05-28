@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BTLCSharpxSql.MatHang
+namespace BTLCSharpxSql.FMatHang
 {
-    internal class QLyMathang
+    internal class QLmatHang
     {
         private string maHang;
         private string tenHang;
@@ -17,12 +17,11 @@ namespace BTLCSharpxSql.MatHang
         private string donviTinh;
         private SqlMoney giaHang;
 
-        public QLyMathang()
+        public QLmatHang()
         {
         }
 
-        public QLyMathang(string maHang, string tenHang, string maCongTy, string maloaihang,
-                        int soluong, string donviTinh, SqlMoney giaHang)
+        public QLmatHang(string maHang, string tenHang, string maCongTy, string maloaihang, int soluong, string donviTinh, SqlMoney giaHang)
         {
             this.maHang = maHang;
             this.tenHang = tenHang;

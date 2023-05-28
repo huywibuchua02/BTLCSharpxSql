@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BTLCSharpxSql.FMatHang;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,7 +39,7 @@ namespace BTLCSharpxSql
             {
                 currentFromChild.Close();
             }
-            label1.Text = "Home";
+            label1.Text = "🏠Home";
         }
 
         private void Form1_Load(object sender, EventArgs e)

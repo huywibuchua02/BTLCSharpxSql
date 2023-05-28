@@ -6,22 +6,19 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace BTLCSharpxSql.MatHang
+namespace BTLCSharpxSql.FMatHang
 {
     internal class Modify
     {
-        SqlDataAdapter dataAdapter;//truy xuat du lieu vao bang
-        SqlCommand sqlCommand;//truy vấn cập nhật tới csdl
-        internal string maSp;
+        SqlDataAdapter dataAdapter; // Truy xuất dữ liệu vào bảng
+        SqlCommand sqlCommand; // Truy vấn cập nhật tới CSDL
 
         public Modify()
         {
-
         }
 
-        //dataset: trả về nhiều bảng
-        //dataTable: trả về một bảng
-        public DataTable getAllMatHang()
+        // Lấy tất cả mặt hàng
+        public DataTable GetAllMatHang()
         {
             DataTable dataTable = new DataTable();
             string query = "select * from mathang";
@@ -38,43 +35,13 @@ namespace BTLCSharpxSql.MatHang
             return dataTable;
         }
 
-        public bool Update(QLyMathang qLymatHang)
+        // Cập nhật thông tin mặt hàng
+        public bool Update(QLmatHang qLmatHang)
         {
             SqlConnection sqlConnection = connect.GetConnection();
 
             string query = "update mathang set tenhang = @tenhang,macongty = @macongty,maloaihang = @maloaihang,soluong = @soluong," +
                 "donvitinh = @donvitinh,giahang = @giahang WHERE mahang = @mahang;";
-
-            //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
-            try
-            {
-                sqlConnection.Open();
-                sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.Add("@mahang", SqlDbType.NVarChar).Value = qLymatHang.MaHang;
-                sqlCommand.Parameters.Add("@tenhang", SqlDbType.NVarChar).Value = qLymatHang.TenHang;
-                sqlCommand.Parameters.Add("@macongty", SqlDbType.NVarChar).Value = qLymatHang.Soluong;
-                sqlCommand.Parameters.Add("@maloaihang", SqlDbType.NVarChar).Value = qLymatHang.Maloaihang;
-                sqlCommand.Parameters.Add("@soluong", SqlDbType.Int).Value = qLymatHang.Soluong;
-                sqlCommand.Parameters.Add("@donvitinh", SqlDbType.NVarChar).Value = qLymatHang.DonviTinh;
-                sqlCommand.Parameters.Add("@giahang", SqlDbType.Money).Value = qLymatHang.GiaHang;
-                sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
-            }
-            catch
-            {
-                return false;
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-            return true;
-        }
-
-        public bool insert(QLyMathang qLmatHang)
-        {
-            SqlConnection sqlConnection = connect.GetConnection();
-
-            string query = "insert into mathang values(@mahang,@tenhang,@macongty,@maloaihang,@soluong,@donvitinh,@giahang)";
 
             //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
             try
@@ -101,6 +68,7 @@ namespace BTLCSharpxSql.MatHang
             return true;
         }
 
+        // Xóa mặt hàng
         public bool Delete(string mahang)
         {
             SqlConnection sqlConnection = connect.GetConnection();
