@@ -118,25 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="huy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\huy.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="306041472_818666186218432_7866702711737848225_n (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\306041472_818666186218432_7866702711737848225_n (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cute.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="loi-ich-thiet-ke-web" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\loi-ich-thiet-ke-web.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="istockphoto-954305374-170667a" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\istockphoto-954305374-170667a.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pngtree-telemedicine-and-online-pharmacy-concept-png-image_8645352" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pngtree-telemedicine-and-online-pharmacy-concept-png-image_8645352.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mhhsnpwnsky" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mhhsnpwnsky.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="320344" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\320344.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="af1174b6162882c5c3d0fd6ea3d18de4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\af1174b6162882c5c3d0fd6ea3d18de4.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="af1174b6162882c5c3d0fd6ea3d18de41" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\af1174b6162882c5c3d0fd6ea3d18de4.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
