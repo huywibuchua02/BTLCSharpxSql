@@ -59,7 +59,7 @@ namespace BTLCSharpxSql.FMatHang
 
             // tao demo thực hiện proceduce - chuỗi k phải sql nữa mà là tên proceduce
             // chuẩn bị tên proceduce:
-            string query = "sp_mathang_Update";
+            string query = "sp_mathang_sua";
             // new đối tượng thư viên để gọi các hàm trong thư viện:
             libDB lib = new libDB(chuoiketnoi);
             SqlCommand cmd = lib.GetCmd(query); // lấy về đối tượng sqlcomman
@@ -159,7 +159,15 @@ namespace BTLCSharpxSql.FMatHang
             string tenhang = this.textBox_tenH.Text;
             string maCongTy = this.textBox_MaCTY.Text;
             string maLoaiHang = this.textBox_maLH.Text;
-            int soLuong = Convert.ToInt32(this.textBox_soLuong.Text);
+  /*          int soLuong = Convert.ToInt32(this.textBox_soLuong.Text);*/
+            int soLuong;
+            if (!int.TryParse(this.textBox_soLuong.Text, out soLuong))
+            {
+                MessageBox.Show("Số lượng không hợp lệ. Vui lòng nhập một số nguyên.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // Tiếp tục xử lý với giá trị soLuong đã chuyển đổi thành công
+
             string donViTinh = this.textBox_DVT.Text;
             SqlMoney giaHang = SqlMoney.Parse(this.textBox_gia.Text);
             qLmatHang = new QLmatHang(mahang, tenhang, maCongTy, maLoaiHang, soLuong, donViTinh, giaHang);
@@ -168,7 +176,7 @@ namespace BTLCSharpxSql.FMatHang
 
             // tao demo thực hiện proceduce - chuỗi k phải sql nữa mà là tên proceduce
             // chuẩn bị tên proceduce:
-            string query = "sp_mathang_Update";
+            string query = "sp_mathang_sua";
             // new đối tượng thư viên để gọi các hàm trong thư viện:
             libDB lib = new libDB(chuoiketnoi);
             SqlCommand cmd = lib.GetCmd(query); // lấy về đối tượng sqlcomman
@@ -200,7 +208,14 @@ namespace BTLCSharpxSql.FMatHang
 
         private void xoaThongTin()
         {
-
+            textBox_maH.Text = string.Empty;
+            textBox_tenH.Text = string.Empty;
+            textBox_MaCTY.Text = string.Empty;
+            textBox_maLH.Text = string.Empty;
+            textBox_soLuong.Text = string.Empty;
+            textBox_DVT.Text = string.Empty;
+            textBox_gia.Text = string.Empty;
         }
+
     }
 }
