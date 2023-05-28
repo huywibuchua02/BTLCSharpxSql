@@ -197,6 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="connect.cs" />
+    <Compile Include="FLoaiHang\QLloaiHang.cs" />
     <Compile Include="FLoaiHang\Modify_LH.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -323,7 +324,19 @@
   <ItemGroup>
     <None Include="Resources\loi-ich-thiet-ke-web.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\a9691ad3d62f0871513e.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9f7a5d7fb78369dd3092.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FChiTietDatHang\" />
+    <Folder Include="FDonDatHang\" />
+    <Folder Include="FKhachHang\" />
+    <Folder Include="FNhaCungCap\" />
+    <Folder Include="FNhanVien\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.5.1.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.5.1.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
