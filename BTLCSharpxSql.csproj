@@ -197,8 +197,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="connect.cs" />
+    <Compile Include="FChiTietDonHang\Modify_CTDH.cs" />
+    <Compile Include="FChiTietDonHang\QLchiTietDonHang.cs" />
+    <Compile Include="FDonDatHang\Modify_DDH.cs" />
+    <Compile Include="FDonDatHang\QLdonDatHang.cs" />
+    <Compile Include="FKhachHang\Modify_KH.cs" />
+    <Compile Include="FKhachHang\QLKhachHang.cs" />
     <Compile Include="FLoaiHang\QLloaiHang.cs" />
     <Compile Include="FLoaiHang\Modify_LH.cs" />
+    <Compile Include="FNhaCungCap\Modify_NCC.cs" />
+    <Compile Include="FNhaCungCap\QLNhaCungCap.cs" />
+    <Compile Include="FNhanVien\Modify_NV.cs" />
+    <Compile Include="FNhanVien\QLNhanVien.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -330,13 +340,7 @@
   <ItemGroup>
     <None Include="Resources\9f7a5d7fb78369dd3092.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FChiTietDatHang\" />
-    <Folder Include="FDonDatHang\" />
-    <Folder Include="FKhachHang\" />
-    <Folder Include="FNhaCungCap\" />
-    <Folder Include="FNhanVien\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.5.1.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.5.1.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
