@@ -12,15 +12,21 @@ namespace BTLCSharpxSql.FLoaiHang
     {
         SqlDataAdapter dataAdapter;
         SqlCommand sqlCommand;
-        public DataTable getAllLoaiHang()
+        public Modify_LH()
+        {
+        }
+
+        // Lấy tất cả loại hàng
+        public DataTable GetAllLoaiHang()
         {
             DataTable dataTable = new DataTable();
-            string query = "select * from loaihang";
+            string query = "SELECT * FROM loaihang";
             using (SqlConnection sqlConnection = connect.GetConnection())
             {
-                sqlConnection.Open();
+                sqlConnection.Open();//mở kết nối
 
                 dataAdapter = new SqlDataAdapter(query, sqlConnection);
+                //truy xuất 
                 dataAdapter.Fill(dataTable);
 
                 sqlConnection.Close();
@@ -28,5 +34,58 @@ namespace BTLCSharpxSql.FLoaiHang
             return dataTable;
         }
 
+        // Cập nhật thông tin loại hàng
+        public bool Update(QLloaiHang qLloaiHang)
+        {
+            SqlConnection sqlConnection = connect.GetConnection();
+
+            string query = "UPDATE loaihang SET tenloaihang = @tenloaihang WHERE maloaihang = @maloaihang;";
+
+            //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
+            try
+            {
+                sqlConnection.Open();
+                sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlCommand.Parameters.Add("@maloaihang", SqlDbType.Int).Value = loaiHang.MaLoaiHang;
+                sqlCommand.Parameters.Add("@tenloaihang", SqlDbType.NVarChar).Value = loaiHang.TenLoaiHang;
+                sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return true;
+        }
+
+        // Xóa loại hàng
+        public bool Delete(int maloaihang)
+        {
+            SqlConnection sqlConnection = connect.GetConnection();
+
+            string query = "DELETE loaihang WHERE maloaihang = @maloaihang";
+
+            //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
+            try
+            {
+                sqlConnection.Open();
+                sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlCommand.Parameters.Add("@maloaihang", SqlDbType.Int).Value = maloaihang;
+
+                sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return true;
+        }
     }
 }

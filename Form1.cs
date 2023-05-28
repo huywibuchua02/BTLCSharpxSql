@@ -1,4 +1,5 @@
-﻿using BTLCSharpxSql.FMatHang;
+﻿using BTLCSharpxSql.FLoaiHang;
+using BTLCSharpxSql.FMatHang;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
