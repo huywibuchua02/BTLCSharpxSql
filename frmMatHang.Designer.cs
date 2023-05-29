@@ -72,7 +72,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 89);
+            this.label3.Location = new System.Drawing.Point(266, 25);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
@@ -82,17 +82,17 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(49, 126);
+            this.label4.Location = new System.Drawing.Point(266, 96);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 13);
+            this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Giá";
+            this.label4.Text = "Giá Hàng";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(258, 25);
+            this.label5.Location = new System.Drawing.Point(37, 121);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 13);
@@ -102,7 +102,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(258, 58);
+            this.label6.Location = new System.Drawing.Point(37, 86);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 13);
@@ -112,7 +112,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(258, 96);
+            this.label7.Location = new System.Drawing.Point(266, 59);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 13);
@@ -121,7 +121,7 @@
             // 
             // textBox_maH
             // 
-            this.textBox_maH.Location = new System.Drawing.Point(106, 23);
+            this.textBox_maH.Location = new System.Drawing.Point(127, 18);
             this.textBox_maH.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_maH.Name = "textBox_maH";
             this.textBox_maH.Size = new System.Drawing.Size(76, 20);
@@ -129,7 +129,7 @@
             // 
             // textBox_tenH
             // 
-            this.textBox_tenH.Location = new System.Drawing.Point(106, 51);
+            this.textBox_tenH.Location = new System.Drawing.Point(127, 47);
             this.textBox_tenH.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_tenH.Name = "textBox_tenH";
             this.textBox_tenH.Size = new System.Drawing.Size(76, 20);
@@ -137,7 +137,7 @@
             // 
             // textBox_soLuong
             // 
-            this.textBox_soLuong.Location = new System.Drawing.Point(106, 82);
+            this.textBox_soLuong.Location = new System.Drawing.Point(370, 22);
             this.textBox_soLuong.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_soLuong.Name = "textBox_soLuong";
             this.textBox_soLuong.Size = new System.Drawing.Size(76, 20);
@@ -145,7 +145,7 @@
             // 
             // textBox_gia
             // 
-            this.textBox_gia.Location = new System.Drawing.Point(106, 119);
+            this.textBox_gia.Location = new System.Drawing.Point(370, 96);
             this.textBox_gia.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_gia.Name = "textBox_gia";
             this.textBox_gia.Size = new System.Drawing.Size(76, 20);
@@ -153,7 +153,7 @@
             // 
             // textBox_maLH
             // 
-            this.textBox_maLH.Location = new System.Drawing.Point(362, 23);
+            this.textBox_maLH.Location = new System.Drawing.Point(127, 118);
             this.textBox_maLH.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_maLH.Name = "textBox_maLH";
             this.textBox_maLH.Size = new System.Drawing.Size(76, 20);
@@ -161,7 +161,7 @@
             // 
             // textBox_MaCTY
             // 
-            this.textBox_MaCTY.Location = new System.Drawing.Point(362, 58);
+            this.textBox_MaCTY.Location = new System.Drawing.Point(127, 83);
             this.textBox_MaCTY.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_MaCTY.Name = "textBox_MaCTY";
             this.textBox_MaCTY.Size = new System.Drawing.Size(76, 20);
@@ -169,7 +169,7 @@
             // 
             // textBox_DVT
             // 
-            this.textBox_DVT.Location = new System.Drawing.Point(362, 96);
+            this.textBox_DVT.Location = new System.Drawing.Point(370, 59);
             this.textBox_DVT.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_DVT.Name = "textBox_DVT";
             this.textBox_DVT.Size = new System.Drawing.Size(76, 20);
