@@ -17,7 +17,7 @@ namespace BTLCSharpxSql.FMatHang
         Modify modify;
         QLmatHang qLmatHang;
         connect cn = new connect(); // Khai báo biến cn kiểu Connect
-        string chuoiketnoi = @"Data Source=HUYBU;Initial Catalog=QuanLyBanHang;Integrated Security=True";
+        string chuoiketnoi = @"Data Source=HUYBU;Initial Catalog=BTLQuanLyBanHang;Integrated Security=True";
 
         public frmMatHang()
         {
