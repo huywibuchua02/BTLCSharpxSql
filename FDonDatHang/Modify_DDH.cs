@@ -21,7 +21,7 @@ namespace BTLCSharpxSql.FDonDatHang
         public DataTable GetAllDonDatHang()
         {
             DataTable dataTable = new DataTable();
-            string query = "select * from qldondathang";
+            string query = "select * from dondathang";
             using (SqlConnection sqlConnection = connect.GetConnection())
             {
                 sqlConnection.Open();//mở kết nối
@@ -40,8 +40,8 @@ namespace BTLCSharpxSql.FDonDatHang
         {
             SqlConnection sqlConnection = connect.GetConnection();
 
-            string query = "update qldondathang set makhachhang = @makhachhang, manhanvien = @manhanvien, ngaydathang = @ngaydathang, ngaygiaohang = @ngaygiaohang,"
-                + "noigiaohang = @noigiaohang "
+            string query = "update dondathang set makhachhang = @makhachhang, manhanvien = @manhanvien, ngaydathang = @ngaydathang, ngaygiaohang = @ngaygiaohang,"
+                + "noigiaohang = @noigiaohang " + "ngaychuyenhang = @ngaychuyenhang"
                 + "WHERE sohoadon = @sohoadon;";
 
             //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
@@ -54,6 +54,7 @@ namespace BTLCSharpxSql.FDonDatHang
                 sqlCommand.Parameters.Add("@manhanvien", SqlDbType.NVarChar).Value = qLDonDatHang.Manhanvien;
                 sqlCommand.Parameters.Add("@ngaydathang", SqlDbType.DateTime).Value = qLDonDatHang.Ngaydathang;
                 sqlCommand.Parameters.Add("@ngaygiaohang", SqlDbType.DateTime).Value = qLDonDatHang.Ngaygiaohang;
+                sqlCommand.Parameters.Add("@ngaychuyenhang", SqlDbType.DateTime).Value = qLDonDatHang.Ngaychuyenhang;
                 sqlCommand.Parameters.Add("@noigiaohang", SqlDbType.NVarChar).Value = qLDonDatHang.Noigiaohang;
                 sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
             }

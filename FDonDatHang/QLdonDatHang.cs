@@ -13,19 +13,21 @@ namespace BTLCSharpxSql.FDonDatHang
         private string manhanvien;
         private DateTime ngaydathang;
         private DateTime ngaygiaohang;
+        private DateTime ngaychuyenhang;
         private string noigiaohang;
 
         public QLdonDatHang()
         {
         }
 
-        public QLdonDatHang(int sohoadon, string makhachhang, string manhanvien, DateTime ngaydathang, DateTime ngaygiaohang, string noigiaohang)
+        public QLdonDatHang(int sohoadon, string makhachhang, string manhanvien, DateTime ngaydathang, DateTime ngaygiaohang, DateTime ngaychuyenhang, string noigiaohang)
         {
             this.sohoadon = sohoadon;
             this.makhachhang = makhachhang;
             this.manhanvien = manhanvien;
             this.ngaydathang = ngaydathang;
             this.ngaygiaohang = ngaygiaohang;
+            this.ngaychuyenhang = ngaychuyenhang;
             this.noigiaohang = noigiaohang;
         }
 
@@ -34,6 +36,7 @@ namespace BTLCSharpxSql.FDonDatHang
         public string Manhanvien { get => manhanvien; set => manhanvien = value; }
         public DateTime Ngaydathang { get => ngaydathang; set => ngaydathang = value; }
         public DateTime Ngaygiaohang { get => ngaygiaohang; set => ngaygiaohang = value; }
+        public DateTime Ngaychuyenhang { get => ngaychuyenhang; set => ngaychuyenhang = value; }
         public string Noigiaohang { get => noigiaohang; set => noigiaohang = value; }
     }
 }
