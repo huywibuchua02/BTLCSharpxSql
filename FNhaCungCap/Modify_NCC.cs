@@ -21,7 +21,7 @@ namespace BTLCSharpxSql.FNhaCungCap
         public DataTable GetAllNhaCungCap()
         {
             DataTable dataTable = new DataTable();
-            string query = "select * from qlnhacungcap";
+            string query = "select * from nhacungcap";
             using (SqlConnection sqlConnection = connect.GetConnection())
             {
                 sqlConnection.Open();//mở kết nối
@@ -40,7 +40,7 @@ namespace BTLCSharpxSql.FNhaCungCap
         {
             SqlConnection sqlConnection = connect.GetConnection();
 
-            string query = "update qlnhacungcap set tencongty = @tencongty, tengiaodich = @tengiaodich, diachi = @diachi, dienthoai = @dienthoai,"
+            string query = "update nhacungcap set tencongty = @tencongty, tengiaodich = @tengiaodich, diachi = @diachi, dienthoai = @dienthoai,"
                 + "fax = @fax, email = @email "
                 + "WHERE macongty = @macongty;";
 
@@ -74,7 +74,7 @@ namespace BTLCSharpxSql.FNhaCungCap
         {
             SqlConnection sqlConnection = connect.GetConnection();
 
-            string query = "delete qlnhacungcap where macongty=@macongty";
+            string query = "delete nhacungcap where macongty=@macongty";
 
             //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
             try

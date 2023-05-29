@@ -74,7 +74,7 @@ namespace BTLCSharpxSql.FDonDatHang
         {
             SqlConnection sqlConnection = connect.GetConnection();
 
-            string query = "delete qldondathang where sohoadon=@sohoadon";
+            string query = "delete dondathang where sohoadon=@sohoadon";
 
             //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
             try
