@@ -1,39 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlTypes;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using Excel = Microsoft.Office.Interop.Excel;
 using BTLCSharpxSql.FDonDatHang;
+using Excel = Microsoft.Office.Interop.Excel;
 
-namespace BTLCSharpxSql.FLoaiHang
+namespace BTLCSharpxSql
 {
     public partial class frmDonDatHang : Form
     {
         Modify_DDH modify_DDH;
         QLdonDatHang qLdonDatHang;
-        connect cn = new connect();
-        string chuoiketnoi = @"Data Source=HUYBU;Initial Catalog=BTLQuanLyBanHang;Integrated Security=True";
 
         public frmDonDatHang()
         {
             InitializeComponent();
-            modify_DDH = new Modify_DDH();
         }
 
         private void frmDonDatHang_Load(object sender, EventArgs e)
         {
-            LoadDonDatHangData();
-        }
-
-        private void LoadDonDatHangData()
-        {
+            modify_DDH = new Modify_DDH();
             try
             {
                 dataGridView1.DataSource = modify_DDH.GetAllDonDatHang();
@@ -44,130 +30,67 @@ namespace BTLCSharpxSql.FLoaiHang
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnThem_Click(object sender, EventArgs e)
         {
-            int sohoadon = Convert.ToInt32(this.txt_sohoadon.Text);
-            string makhachhang = this.txt_makhachhang.Text;
-            string manhanvien = this.txt_manhanvien.Text;
-            DateTime ngaydathang = this.dtp_ngaydathang.Value;
-            DateTime ngaygiaohang = this.dtp_ngaygiaohang.Value;
-            DateTime ngaychuyenhang = this.dtp_ngaychuyenhang.Value;
-            string noigiaohang = this.txt_noigiaohang.Text;
-
+            int sohoadon = int.Parse(txt_sohoadon.Text);
+            string makhachhang = txt_makhachhang.Text;
+            string manhanvien = txt_manhanvien.Text;
+            DateTime ngaydathang = dtp_ngaydathang.Value;
+            DateTime ngaygiaohang = dtp_ngaygiaohang.Value;
+            DateTime ngaychuyenhang = dtp_ngaychuyenhang.Value;
+            string noigiaohang = txt_noigiaohang.Text;
             qLdonDatHang = new QLdonDatHang(sohoadon, makhachhang, manhanvien, ngaydathang, ngaygiaohang, ngaychuyenhang, noigiaohang);
-
-            string query = "sp_dondathang_them";
-            libDB lib = new libDB(chuoiketnoi);
-            SqlCommand cmd = lib.GetCmd(query);
-
-            truyenParameterDonDatHang(ref cmd, qLdonDatHang);
-
-            try
+            if (modify_DDH.ThemDonDatHang(qLdonDatHang))
             {
-                int kq = lib.RunSQL(cmd);
-                if (kq > 0)
-                {
-                    MessageBox.Show("Thêm thành công!");
-                    frmDonDatHang_Load(sender, e);
-                    xoaThongTin();
-                }
+                dataGridView1.DataSource = modify_DDH.GetAllDonDatHang();
+                MessageBox.Show("Thêm đơn đặt hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Lỗi: Không thêm được đơn đặt hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void truyenParameterDonDatHang(ref SqlCommand cmd, QLdonDatHang qLdonDatHang)
+        private void btnSua_Click(object sender, EventArgs e)
         {
-            cmd.Parameters.Add("@sohoadon", SqlDbType.Int).Value = qLdonDatHang.Sohoadon;
-            cmd.Parameters.Add("@makhachhang", SqlDbType.NVarChar).Value = qLdonDatHang.Makhachhang;
-            cmd.Parameters.Add("@manhanvien", SqlDbType.NVarChar).Value = qLdonDatHang.Manhanvien;
-            cmd.Parameters.Add("@ngaydathang", SqlDbType.DateTime).Value = qLdonDatHang.Ngaydathang;
-            cmd.Parameters.Add("@ngaygiaohang", SqlDbType.DateTime).Value = qLdonDatHang.Ngaygiaohang;
-            cmd.Parameters.Add("@ngaychuyenhang", SqlDbType.DateTime).Value = qLdonDatHang.Ngaychuyenhang;
-            cmd.Parameters.Add("@noigiaohang", SqlDbType.NVarChar).Value = qLdonDatHang.Noigiaohang;
+            int sohoadon = int.Parse(txt_sohoadon.Text);
+            string makhachhang = txt_makhachhang.Text;
+            string manhanvien = txt_manhanvien.Text;
+            DateTime ngaydathang = dtp_ngaydathang.Value;
+            DateTime ngaygiaohang = dtp_ngaygiaohang.Value;
+            DateTime ngaychuyenhang = dtp_ngaychuyenhang.Value;
+            string noigiaohang = txt_noigiaohang.Text;
+            qLdonDatHang = new QLdonDatHang(sohoadon, makhachhang, manhanvien, ngaydathang, ngaygiaohang, ngaychuyenhang, noigiaohang);
+            if (modify_DDH.SuaThongTinDonDatHang(qLdonDatHang))
+            {
+                dataGridView1.DataSource = modify_DDH.GetAllDonDatHang();
+                MessageBox.Show("Cập nhật đơn đặt hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Lỗi: Không cập nhật được đơn đặt hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnXoa_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                DataGridViewRow row = dataGridView1.SelectedRows[0];
-                int sohoadon = Convert.ToInt32(row.Cells["sohoadon"].Value);
-
-                string query = "sp_dondathang_xoa";
-                libDB lib = new libDB(chuoiketnoi);
-                SqlCommand cmd = lib.GetCmd(query);
-
-                cmd.Parameters.Add("@sohoadon", SqlDbType.Int).Value = sohoadon;
-
-                try
+                int sohoadon = int.Parse(dataGridView1.SelectedRows[0].Cells["sohoadon"].Value.ToString());
+                if (modify_DDH.XoaDonDatHang(sohoadon))
                 {
-                    int kq = lib.RunSQL(cmd);
-                    if (kq > 0)
-                    {
-                        MessageBox.Show("Xóa thành công!");
-                        frmDonDatHang_Load(sender, e);
-                    }
+                    dataGridView1.DataSource = modify_DDH.GetAllDonDatHang();
+                    MessageBox.Show("Xóa đơn đặt hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    MessageBox.Show("Lỗi: Không xóa được đơn đặt hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một dòng để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn đơn đặt hàng để xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            int sohoadon = Convert.ToInt32(this.txt_sohoadon.Text);
-            string makhachhang = this.txt_makhachhang.Text;
-            string manhanvien = this.txt_manhanvien.Text;
-            DateTime ngaydathang = this.dtp_ngaydathang.Value;
-            DateTime ngaygiaohang = this.dtp_ngaygiaohang.Value;
-            DateTime ngaychuyenhang = this.dtp_ngaychuyenhang.Value;
-            string noigiaohang = this.txt_noigiaohang.Text;
-
-            qLdonDatHang = new QLdonDatHang(sohoadon, makhachhang, manhanvien, ngaydathang, ngaygiaohang, ngaychuyenhang, noigiaohang);
-
-            string query = "sp_dondathang_sua";
-            libDB lib = new libDB(chuoiketnoi);
-            SqlCommand cmd = lib.GetCmd(query);
-
-            truyenParameterDonDatHang(ref cmd, qLdonDatHang);
-
-            try
-            {
-                int kq = lib.RunSQL(cmd);
-                if (kq > 0)
-                {
-                    MessageBox.Show("Sửa thành công!");
-                    frmDonDatHang_Load(sender, e);
-                    xoaThongTin();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
-
-        private void xoaThongTin()
-        {
-            txt_sohoadon.Text = string.Empty;
-            txt_makhachhang.Text = string.Empty;
-            txt_manhanvien.Text = string.Empty;
-            txt_noigiaohang.Text = string.Empty;
-            dtp_ngaydathang.Value = DateTime.Now;
-            dtp_ngaygiaohang.Value = DateTime.Now;
-            dtp_ngaychuyenhang.Value = DateTime.Now;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -209,5 +132,6 @@ namespace BTLCSharpxSql.FLoaiHang
                 MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
     }
 }

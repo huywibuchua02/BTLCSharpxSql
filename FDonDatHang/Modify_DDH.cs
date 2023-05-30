@@ -1,33 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Data;
 
 namespace BTLCSharpxSql.FDonDatHang
 {
     internal class Modify_DDH
     {
         SqlDataAdapter dataAdapter; // Truy xuất dữ liệu vào bảng
-        SqlCommand sqlCommand; // Truy vấn cập nhật tới CSDL
 
-        public Modify_DDH()
-        {
-        }
-
-        // Lấy tất cả đơn đặt hàng
         public DataTable GetAllDonDatHang()
         {
             DataTable dataTable = new DataTable();
-            string query = "select * from dondathang";
+            string query = "SELECT * FROM dondathang";
             using (SqlConnection sqlConnection = connect.GetConnection())
             {
-                sqlConnection.Open();//mở kết nối
+                sqlConnection.Open();// Mở kết nối
 
                 dataAdapter = new SqlDataAdapter(query, sqlConnection);
-                //truy xuất 
+                // Truy xuất 
                 dataAdapter.Fill(dataTable);
 
                 sqlConnection.Close();
@@ -35,28 +24,16 @@ namespace BTLCSharpxSql.FDonDatHang
             return dataTable;
         }
 
-        // Cập nhật thông tin đơn đặt hàng
-        public bool Update(QLdonDatHang qLDonDatHang)
+        private bool ExecuteNonQuery(SqlCommand command)
         {
             SqlConnection sqlConnection = connect.GetConnection();
 
-            string query = "update dondathang set makhachhang = @makhachhang, manhanvien = @manhanvien, ngaydathang = @ngaydathang, ngaygiaohang = @ngaygiaohang,"
-                + "noigiaohang = @noigiaohang " + "ngaychuyenhang = @ngaychuyenhang"
-                + "WHERE sohoadon = @sohoadon;";
-
-            //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
             try
             {
+                command.Connection = sqlConnection;
                 sqlConnection.Open();
-                sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.Add("@sohoadon", SqlDbType.Int).Value = qLDonDatHang.Sohoadon;
-                sqlCommand.Parameters.Add("@makhachhang", SqlDbType.NVarChar).Value = qLDonDatHang.Makhachhang;
-                sqlCommand.Parameters.Add("@manhanvien", SqlDbType.NVarChar).Value = qLDonDatHang.Manhanvien;
-                sqlCommand.Parameters.Add("@ngaydathang", SqlDbType.DateTime).Value = qLDonDatHang.Ngaydathang;
-                sqlCommand.Parameters.Add("@ngaygiaohang", SqlDbType.DateTime).Value = qLDonDatHang.Ngaygiaohang;
-                sqlCommand.Parameters.Add("@ngaychuyenhang", SqlDbType.DateTime).Value = qLDonDatHang.Ngaychuyenhang;
-                sqlCommand.Parameters.Add("@noigiaohang", SqlDbType.NVarChar).Value = qLDonDatHang.Noigiaohang;
-                sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
+                command.ExecuteNonQuery();
+                return true;
             }
             catch
             {
@@ -66,24 +43,53 @@ namespace BTLCSharpxSql.FDonDatHang
             {
                 sqlConnection.Close();
             }
-            return true;
         }
 
-        // Xóa đơn đặt hàng
-        public bool Delete(int sohoadon)
+        public bool ExecuteStoredProc(string storedProcedure, QLdonDatHang qLdonDatHang)
         {
             SqlConnection sqlConnection = connect.GetConnection();
 
-            string query = "delete dondathang where sohoadon=@sohoadon";
-
-            //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
             try
             {
-                sqlConnection.Open();
-                sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.Add("@sohoadon", SqlDbType.Int).Value = sohoadon;
+                SqlCommand command = new SqlCommand(storedProcedure, sqlConnection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@sohoadon", SqlDbType.Int).Value = qLdonDatHang.Sohoadon;
+                command.Parameters.Add("@makhachhang", SqlDbType.NVarChar).Value = qLdonDatHang.Makhachhang;
+                command.Parameters.Add("@manhanvien", SqlDbType.NVarChar).Value = qLdonDatHang.Manhanvien;
+                command.Parameters.Add("@ngaydathang", SqlDbType.DateTime).Value = qLdonDatHang.Ngaydathang;
+                command.Parameters.Add("@ngaygiaohang", SqlDbType.DateTime).Value = qLdonDatHang.Ngaygiaohang;
+                command.Parameters.Add("@ngaychuyenhang", SqlDbType.DateTime).Value = qLdonDatHang.Ngaychuyenhang;
+                command.Parameters.Add("@noigiaohang", SqlDbType.NVarChar).Value = qLdonDatHang.Noigiaohang;
 
-                sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
+                return ExecuteNonQuery(command);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool ThemDonDatHang(QLdonDatHang qLdonDatHang)
+        {
+            return ExecuteStoredProc("sp_dondathang_them", qLdonDatHang);
+        }
+
+        public bool SuaThongTinDonDatHang(QLdonDatHang qLdonDatHang)
+        {
+            return ExecuteStoredProc("sp_dondathang_sua", qLdonDatHang);
+        }
+
+        public bool XoaDonDatHang(int sohoadon)
+        {
+            SqlConnection sqlConnection = connect.GetConnection();
+
+            try
+            {
+                SqlCommand command = new SqlCommand("sp_dondathang_xoa", sqlConnection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@sohoadon", SqlDbType.Int).Value = sohoadon;
+
+                return ExecuteNonQuery(command);
             }
             catch
             {
@@ -93,7 +99,6 @@ namespace BTLCSharpxSql.FDonDatHang
             {
                 sqlConnection.Close();
             }
-            return true;
         }
     }
 }

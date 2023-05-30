@@ -8,12 +8,12 @@ using System.Data;
 
 namespace BTLCSharpxSql.FChiTietDonHang
 {
-    internal class Modify
+    internal class Modify_CTDH
     {
         SqlDataAdapter dataAdapter; // Truy xuất dữ liệu vào bảng
         SqlCommand sqlCommand; // Truy vấn cập nhật tới CSDL
 
-        public Modify()
+        public Modify_CTDH()
         {
         }
 
@@ -21,7 +21,7 @@ namespace BTLCSharpxSql.FChiTietDonHang
         public DataTable GetAllChiTietDonHang()
         {
             DataTable dataTable = new DataTable();
-            string query = "select * from qlchitietdonhang";
+            string query = "select * from chitietdonhang";
             using (SqlConnection sqlConnection = connect.GetConnection())
             {
                 sqlConnection.Open();//mở kết nối

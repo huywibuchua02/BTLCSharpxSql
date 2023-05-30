@@ -1,4 +1,4 @@
-﻿namespace BTLCSharpxSql.FLoaiHang
+﻿namespace BTLCSharpxSql
 {
     partial class frmDonDatHang
     {
