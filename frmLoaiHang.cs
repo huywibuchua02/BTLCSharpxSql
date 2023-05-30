@@ -93,45 +93,47 @@ namespace BTLCSharpxSql
 
         private void button_xuatExcel_Click_1(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count > 0)
             {
-                try
+                if (dataGridView1.Rows.Count > 0)
                 {
-                    // Tạo đối tượng Excel
-                    Excel.Application excel = new Excel.Application();
-                    excel.Visible = true;
-                    Excel.Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
-                    Excel.Worksheet sheet = (Excel.Worksheet)workbook.ActiveSheet;
-
-                    // Đặt tên các cột trong Excel
-                    sheet.Cells[1, 1] = "Mã Loại Hàng";
-                    sheet.Cells[1, 2] = "Tên Loại Hàng";
-
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    try
                     {
-                        for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                        // Tạo đối tượng Excel
+                        Excel.Application excel = new Excel.Application();
+                        excel.Visible = true;
+                        Excel.Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+                        Excel.Worksheet sheet = (Excel.Worksheet)workbook.ActiveSheet;
+
+                        // Đặt tên các cột trong Excel
+                        sheet.Cells[1, 1] = "Mã khách hàng";
+                        sheet.Cells[1, 2] = "Tên loại hàng";
+
+
+                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
                         {
-                            if (dataGridView1.Rows[i].Cells[j].Value != null)
+                            for (int j = 0; j < dataGridView1.Columns.Count; j++)
                             {
-                                sheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                if (dataGridView1.Rows[i].Cells[j].Value != null)
+                                {
+                                    sheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                }
                             }
                         }
-                    }
 
-                    // Lưu file Excel
-                    string savePath = @"D:\Excel\LoaiHang.xlsx";
-                    workbook.SaveAs(savePath);
-                    MessageBox.Show("Xuất file Excel thành công! Đường dẫn: " + savePath);
+                        // Lưu file Excel
+                        string savePath = @"D:\Excel\LoaiHang.xlsx";
+                        workbook.SaveAs(savePath);
+                        MessageBox.Show("Xuất file Excel thành công! Đường dẫn: " + savePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
-            else
-            {
-                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-    }
 }

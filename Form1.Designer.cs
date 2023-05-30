@@ -30,11 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel_Left = new System.Windows.Forms.Panel();
-            this.panel_Top = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel_Body = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button7 = new FontAwesome.Sharp.IconButton();
             this.button6 = new FontAwesome.Sharp.IconButton();
             this.button5 = new FontAwesome.Sharp.IconButton();
@@ -43,11 +38,16 @@
             this.button2 = new FontAwesome.Sharp.IconButton();
             this.button1 = new FontAwesome.Sharp.IconButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel_Top = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel_Body = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel_Left.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_Top.SuspendLayout();
             this.panel_Body.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_Left
@@ -67,65 +67,6 @@
             this.panel_Left.Name = "panel_Left";
             this.panel_Left.Size = new System.Drawing.Size(200, 673);
             this.panel_Left.TabIndex = 0;
-            // 
-            // panel_Top
-            // 
-            this.panel_Top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(157)))), ((int)(((byte)(143)))));
-            this.panel_Top.Controls.Add(this.label2);
-            this.panel_Top.Controls.Add(this.label1);
-            this.panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_Top.Location = new System.Drawing.Point(200, 0);
-            this.panel_Top.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel_Top.Name = "panel_Top";
-            this.panel_Top.Size = new System.Drawing.Size(1087, 100);
-            this.panel_Top.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(289, 9);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(442, 54);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Quản Lý Bán Hàng";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(28, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 35);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "🏠 Home";
-            // 
-            // panel_Body
-            // 
-            this.panel_Body.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(157)))), ((int)(((byte)(143)))));
-            this.panel_Body.Controls.Add(this.pictureBox2);
-            this.panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Body.Location = new System.Drawing.Point(200, 100);
-            this.panel_Body.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel_Body.Name = "panel_Body";
-            this.panel_Body.Size = new System.Drawing.Size(1087, 573);
-            this.panel_Body.TabIndex = 2;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(157)))), ((int)(((byte)(143)))));
-            this.pictureBox2.BackgroundImage = global::BTLCSharpxSql.Properties.Resources.imresizer_1685456701824;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1077, 566);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
             // 
             // button7
             // 
@@ -297,6 +238,65 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // panel_Top
+            // 
+            this.panel_Top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(157)))), ((int)(((byte)(143)))));
+            this.panel_Top.Controls.Add(this.label2);
+            this.panel_Top.Controls.Add(this.label1);
+            this.panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_Top.Location = new System.Drawing.Point(200, 0);
+            this.panel_Top.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel_Top.Name = "panel_Top";
+            this.panel_Top.Size = new System.Drawing.Size(1087, 100);
+            this.panel_Top.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(289, 9);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(419, 53);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Quản Lý Bán Hàng";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(28, 62);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(137, 35);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "🏠 Home";
+            // 
+            // panel_Body
+            // 
+            this.panel_Body.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(157)))), ((int)(((byte)(143)))));
+            this.panel_Body.Controls.Add(this.pictureBox2);
+            this.panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_Body.Location = new System.Drawing.Point(200, 100);
+            this.panel_Body.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel_Body.Name = "panel_Body";
+            this.panel_Body.Size = new System.Drawing.Size(1087, 573);
+            this.panel_Body.TabIndex = 2;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(157)))), ((int)(((byte)(143)))));
+            this.pictureBox2.BackgroundImage = global::BTLCSharpxSql.Properties.Resources.imresizer_1685456701824;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(1077, 566);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -311,11 +311,11 @@
             this.Text = "Quản lý bán hàng";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel_Left.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel_Top.ResumeLayout(false);
             this.panel_Top.PerformLayout();
             this.panel_Body.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

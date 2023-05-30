@@ -105,20 +105,28 @@ namespace BTLCSharpxSql
                     Excel.Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
                     Excel.Worksheet sheet = (Excel.Worksheet)workbook.ActiveSheet;
 
-                    // Đổ dữ liệu từ DataGridView vào Excel
+                    // Đặt tên các cột trong Excel
+                    sheet.Cells[1, 1] = "Số hóa đơn";
+                    sheet.Cells[1, 2] = "Mã khách hàng";
+                    sheet.Cells[1, 3] = "Mã nhân viên";
+                    sheet.Cells[1, 4] = "Ngày đặt hàng";
+                    sheet.Cells[1, 5] = "Ngày giao hàng";
+                    sheet.Cells[1, 6] = "Ngày chuyển hàng";
+                    sheet.Cells[1, 7] = "Nơi giao hàng";
+
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         for (int j = 0; j < dataGridView1.Columns.Count; j++)
                         {
                             if (dataGridView1.Rows[i].Cells[j].Value != null)
                             {
-                                sheet.Cells[i + 1, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                sheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                             }
                         }
                     }
 
                     // Lưu file Excel
-                    string savePath = @"D:\Excel\DonDatHang.xlsx";
+                    string savePath = @"D:\Excel\ChiTietDatHang.xlsx";
                     workbook.SaveAs(savePath);
                     MessageBox.Show("Xuất file Excel thành công! Đường dẫn: " + savePath);
                 }

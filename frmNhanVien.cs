@@ -110,14 +110,24 @@ namespace BTLCSharpxSql
                     Excel.Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
                     Excel.Worksheet sheet = (Excel.Worksheet)workbook.ActiveSheet;
 
-                    // Đổ dữ liệu từ DataGridView vào Excel
+                    // Đặt tên các cột trong Excel
+                    sheet.Cells[1, 1] = "Mã nhân viên";
+                    sheet.Cells[1, 2] = "Họ";
+                    sheet.Cells[1, 3] = "Tên";
+                    sheet.Cells[1, 4] = "Ngày sinh";
+                    sheet.Cells[1, 5] = "Ngày làm việc";
+                    sheet.Cells[1, 6] = "Địa chỉ";
+                    sheet.Cells[1, 7] = "Điện thoại";
+                    sheet.Cells[1, 8] = "Lương cơ bản";
+                    sheet.Cells[1, 9] = "Phụ cấp";
+
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         for (int j = 0; j < dataGridView1.Columns.Count; j++)
                         {
                             if (dataGridView1.Rows[i].Cells[j].Value != null)
                             {
-                                sheet.Cells[i + 1, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                sheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                             }
                         }
                     }
