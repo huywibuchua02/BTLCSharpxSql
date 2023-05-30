@@ -18,13 +18,11 @@ namespace BTLCSharpxSql.FNhanVien
         private string dienthoai;
         private SqlMoney luongcoban;
         private SqlMoney phucap;
-        private int tuoi;
-
         public QLNhanVien()
         {
         }
 
-        public QLNhanVien(string manhanvien, string ho, string ten, DateTime ngaysinh, DateTime ngaylamviec, string diachi, string dienthoai, SqlMoney luongcoban, SqlMoney phucap, int tuoi)
+        public QLNhanVien(string manhanvien, string ho, string ten, DateTime ngaysinh, DateTime ngaylamviec, string diachi, string dienthoai, SqlMoney luongcoban, SqlMoney phucap)
         {
             this.manhanvien = manhanvien;
             this.ho = ho;
@@ -35,7 +33,6 @@ namespace BTLCSharpxSql.FNhanVien
             this.dienthoai = dienthoai;
             this.luongcoban = luongcoban;
             this.phucap = phucap;
-            this.tuoi = tuoi;
         }
 
         public string Manhanvien { get => manhanvien; set => manhanvien = value; }
@@ -47,6 +44,5 @@ namespace BTLCSharpxSql.FNhanVien
         public string Dienthoai { get => dienthoai; set => dienthoai = value; }
         public SqlMoney Luongcoban { get => luongcoban; set => luongcoban = value; }
         public SqlMoney Phucap { get => phucap; set => phucap = value; }
-        public int Tuoi { get => tuoi; set => tuoi = value; }
     }
 }

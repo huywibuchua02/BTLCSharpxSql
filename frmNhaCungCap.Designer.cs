@@ -51,12 +51,15 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(13, 183);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1027, 321);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -93,7 +96,7 @@
             // textBox_macongty
             // 
             this.textBox_macongty.Location = new System.Drawing.Point(221, 18);
-            this.textBox_macongty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_macongty.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_macongty.Name = "textBox_macongty";
             this.textBox_macongty.Size = new System.Drawing.Size(132, 22);
             this.textBox_macongty.TabIndex = 4;
@@ -101,7 +104,7 @@
             // textBox_tencongty
             // 
             this.textBox_tencongty.Location = new System.Drawing.Point(221, 59);
-            this.textBox_tencongty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_tencongty.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_tencongty.Name = "textBox_tencongty";
             this.textBox_tencongty.Size = new System.Drawing.Size(132, 22);
             this.textBox_tencongty.TabIndex = 5;
@@ -109,7 +112,7 @@
             // textBox_tengiaodich
             // 
             this.textBox_tengiaodich.Location = new System.Drawing.Point(221, 98);
-            this.textBox_tengiaodich.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_tengiaodich.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_tengiaodich.Name = "textBox_tengiaodich";
             this.textBox_tengiaodich.Size = new System.Drawing.Size(132, 22);
             this.textBox_tengiaodich.TabIndex = 6;
@@ -147,7 +150,7 @@
             // textBox_diachi
             // 
             this.textBox_diachi.Location = new System.Drawing.Point(221, 137);
-            this.textBox_diachi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_diachi.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_diachi.Name = "textBox_diachi";
             this.textBox_diachi.Size = new System.Drawing.Size(132, 22);
             this.textBox_diachi.TabIndex = 10;
@@ -155,7 +158,7 @@
             // textBox_dienthoai
             // 
             this.textBox_dienthoai.Location = new System.Drawing.Point(547, 59);
-            this.textBox_dienthoai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_dienthoai.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_dienthoai.Name = "textBox_dienthoai";
             this.textBox_dienthoai.Size = new System.Drawing.Size(132, 22);
             this.textBox_dienthoai.TabIndex = 11;
@@ -163,7 +166,7 @@
             // textBox_fax
             // 
             this.textBox_fax.Location = new System.Drawing.Point(547, 107);
-            this.textBox_fax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_fax.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_fax.Name = "textBox_fax";
             this.textBox_fax.Size = new System.Drawing.Size(132, 22);
             this.textBox_fax.TabIndex = 12;
@@ -171,7 +174,7 @@
             // button_them
             // 
             this.button_them.Location = new System.Drawing.Point(820, 30);
-            this.button_them.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_them.Margin = new System.Windows.Forms.Padding(4);
             this.button_them.Name = "button_them";
             this.button_them.Size = new System.Drawing.Size(100, 28);
             this.button_them.TabIndex = 13;
@@ -181,7 +184,7 @@
             // button_sua
             // 
             this.button_sua.Location = new System.Drawing.Point(820, 73);
-            this.button_sua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_sua.Margin = new System.Windows.Forms.Padding(4);
             this.button_sua.Name = "button_sua";
             this.button_sua.Size = new System.Drawing.Size(100, 28);
             this.button_sua.TabIndex = 14;
@@ -191,7 +194,7 @@
             // button_xoa
             // 
             this.button_xoa.Location = new System.Drawing.Point(820, 114);
-            this.button_xoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_xoa.Margin = new System.Windows.Forms.Padding(4);
             this.button_xoa.Name = "button_xoa";
             this.button_xoa.Size = new System.Drawing.Size(100, 28);
             this.button_xoa.TabIndex = 15;
@@ -211,7 +214,7 @@
             // textBox_email
             // 
             this.textBox_email.Location = new System.Drawing.Point(547, 15);
-            this.textBox_email.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_email.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_email.Name = "textBox_email";
             this.textBox_email.Size = new System.Drawing.Size(132, 22);
             this.textBox_email.TabIndex = 17;
