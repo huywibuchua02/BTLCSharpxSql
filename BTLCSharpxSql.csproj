@@ -271,7 +271,7 @@
     <Compile Include="frmLoaiHang.Designer.cs">
       <DependentUpon>frmLoaiHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="FMatHang\Modify.cs" />
+    <Compile Include="FMatHang\Modify_MH.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

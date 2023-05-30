@@ -9,7 +9,7 @@ namespace BTLCSharpxSql
 {
     public partial class frmMatHang : Form
     {
-        Modify modify;
+        Modify_MH modify_MH;
         QLmatHang qlMatHang;
 
         public frmMatHang()
@@ -19,10 +19,10 @@ namespace BTLCSharpxSql
 
         private void frmMatHang_Load(object sender, EventArgs e)
         {
-            modify = new Modify();
+            modify_MH = new Modify_MH();
             try
             {
-                dataGridView1.DataSource = modify.GetAllMatHang();
+                dataGridView1.DataSource = modify_MH.GetAllMatHang();
             }
             catch (Exception ex)
             {
@@ -42,9 +42,9 @@ namespace BTLCSharpxSql
 
             qlMatHang = new QLmatHang(maHang, tenHang, maCongTy, maLoaiHang, soLuong, donViTinh, giaHang);
 
-            if (modify.ThemMatHang(qlMatHang))
+            if (modify_MH.ThemMatHang(qlMatHang))
             {
-                dataGridView1.DataSource = modify.GetAllMatHang();
+                dataGridView1.DataSource = modify_MH.GetAllMatHang();
                 MessageBox.Show("Thêm mặt hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -65,9 +65,9 @@ namespace BTLCSharpxSql
 
             qlMatHang = new QLmatHang(maHang, tenHang, maCongTy, maLoaiHang, soLuong, donViTinh, giaHang);
 
-            if (modify.SuaThongTinMatHang(qlMatHang))
+            if (modify_MH.SuaThongTinMatHang(qlMatHang))
             {
-                dataGridView1.DataSource = modify.GetAllMatHang();
+                dataGridView1.DataSource = modify_MH.GetAllMatHang();
                 MessageBox.Show("Cập nhật mặt hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -81,9 +81,9 @@ namespace BTLCSharpxSql
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 string maHang = dataGridView1.SelectedRows[0].Cells["maHang"].Value.ToString();
-                if (modify.XoaMatHang(maHang))
+                if (modify_MH.XoaMatHang(maHang))
                 {
-                    dataGridView1.DataSource = modify.GetAllMatHang();
+                    dataGridView1.DataSource = modify_MH.GetAllMatHang();
                     MessageBox.Show("Xóa mặt hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else

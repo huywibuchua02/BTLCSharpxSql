@@ -93,7 +93,6 @@ namespace BTLCSharpxSql
 
         private void button_xuatExcel_Click_1(object sender, EventArgs e)
         {
-            {
                 if (dataGridView1.Rows.Count > 0)
                 {
                     try
@@ -134,6 +133,6 @@ namespace BTLCSharpxSql
                 {
                     MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
         }
+    }
 }

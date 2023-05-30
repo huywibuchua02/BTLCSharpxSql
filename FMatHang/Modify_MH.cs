@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace BTLCSharpxSql.FMatHang
 {
-    internal class Modify
+    internal class Modify_MH
     {
         private string connectionString = @"Data Source=HUYBU;Initial Catalog=BTLQuanLyBanHang;Integrated Security=True";
 
