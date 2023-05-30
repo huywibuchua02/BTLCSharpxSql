@@ -15,7 +15,6 @@ namespace BTLCSharpxSql.FKhachHang
         private string email;
         private string dienThoai;
         private string fax;
-        private string tenKhachHang;
 
 
 
@@ -31,12 +30,13 @@ namespace BTLCSharpxSql.FKhachHang
         }
 
         public string MaKhachHang { get => maKhachHang; set => maKhachHang = value; }
+        public string TenCongTy1 { get => TenCongTy; set => TenCongTy = value; }
         public string TenGiaoDich { get => tenGiaoDich; set => tenGiaoDich = value; }
         public string DiaChi { get => diaChi; set => diaChi = value; }
         public string Email { get => email; set => email = value; }
         public string DienThoai { get => dienThoai; set => dienThoai = value; }
         public string Fax { get => fax; set => fax = value; }
-        public string TenKhachHang { get => tenKhachHang; set => tenKhachHang = value; }
-        public string TenCongTy1 { get => TenCongTy; set => TenCongTy = value; }
+
+
     }
 }
