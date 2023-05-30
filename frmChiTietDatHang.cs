@@ -111,7 +111,6 @@ namespace BTLCSharpxSql
                     sheet.Cells[1, 4] = "Số lượng";
                     sheet.Cells[1, 5] = "Mức giảm giá";
 
-                    // Đổ dữ liệu từ DataGridView vào Excel
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         for (int j = 0; j < dataGridView1.Columns.Count; j++)

@@ -1,98 +1,112 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data;
+using System.Windows.Forms;
 
 namespace BTLCSharpxSql.FMatHang
 {
     internal class Modify
     {
-        SqlDataAdapter dataAdapter; // Truy xuất dữ liệu vào bảng
-        SqlCommand sqlCommand; // Truy vấn cập nhật tới CSDL
+        private string connectionString = @"Data Source=HUYBU;Initial Catalog=BTLQuanLyBanHang;Integrated Security=True";
 
-        public Modify()
-        {
-        }
-
-        // Lấy tất cả mặt hàng
         public DataTable GetAllMatHang()
         {
             DataTable dataTable = new DataTable();
-            string query = "select * from mathang";
-            using (SqlConnection sqlConnection = connect.GetConnection())
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                sqlConnection.Open();//mở kết nối
-
-                dataAdapter = new SqlDataAdapter(query, sqlConnection);
-                //truy xuất 
-                dataAdapter.Fill(dataTable);
-
-                sqlConnection.Close();
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM mathang";
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
+                    dataAdapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             return dataTable;
         }
 
-        // Cập nhật thông tin mặt hàng
-        public bool Update(QLmatHang qLmatHang)
+        public bool ThemMatHang(QLmatHang qLMatHang)
         {
-            SqlConnection sqlConnection = connect.GetConnection();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "INSERT INTO mathang (maHang, tenHang, maCongTy, maloaihang, soluong, donviTinh) VALUES (@MaHang, @TenHang, @MaCongTy, @MaLoaiHang, @SoLuong, @DonViTinh)";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@MaHang", qLMatHang.MaHang);
+                    command.Parameters.AddWithValue("@TenHang", qLMatHang.TenHang);
+                    command.Parameters.AddWithValue("@MaCongTy", qLMatHang.MaCongTy);
+                    command.Parameters.AddWithValue("@MaLoaiHang", qLMatHang.Maloaihang);
+                    command.Parameters.AddWithValue("@SoLuong", qLMatHang.Soluong);
+                    command.Parameters.AddWithValue("@DonViTinh", qLMatHang.DonviTinh);
 
-            string query = "update mathang set tenhang = @tenhang,macongty = @macongty,maloaihang = @maloaihang,soluong = @soluong," +
-                "donvitinh = @donvitinh,giahang = @giahang WHERE mahang = @mahang;";
-
-            //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
-            try
-            {
-                sqlConnection.Open();
-                sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.Add("@mahang", SqlDbType.NVarChar).Value = qLmatHang.MaHang;
-                sqlCommand.Parameters.Add("@tenhang", SqlDbType.NVarChar).Value = qLmatHang.TenHang;
-                sqlCommand.Parameters.Add("@macongty", SqlDbType.NVarChar).Value = qLmatHang.Soluong;
-                sqlCommand.Parameters.Add("@maloaihang", SqlDbType.NVarChar).Value = qLmatHang.Maloaihang;
-                sqlCommand.Parameters.Add("@soluong", SqlDbType.Int).Value = qLmatHang.Soluong;
-                sqlCommand.Parameters.Add("@donvitinh", SqlDbType.NVarChar).Value = qLmatHang.DonviTinh;
-                sqlCommand.Parameters.Add("@giahang", SqlDbType.Money).Value = qLmatHang.GiaHang;
-                sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
-            catch
-            {
-                return false;
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-            return true;
         }
 
-        // Xóa mặt hàng
-        public bool Delete(string mahang)
+        public bool SuaThongTinMatHang(QLmatHang qLMatHang)
         {
-            SqlConnection sqlConnection = connect.GetConnection();
-
-            string query = "delete mathang where mahang=@mahang";
-
-            //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                sqlConnection.Open();
-                sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.Add("@mahang", SqlDbType.NVarChar).Value = mahang;
+                try
+                {
+                    connection.Open();
+                    string query = "UPDATE mathang SET tenHang = @TenHang, maCongTy = @MaCongTy, maloaihang = @MaLoaiHang, soluong = @SoLuong, donviTinh = @DonViTinh WHERE maHang = @MaHang";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@MaHang", qLMatHang.MaHang);
+                    command.Parameters.AddWithValue("@TenHang", qLMatHang.TenHang);
+                    command.Parameters.AddWithValue("@MaCongTy", qLMatHang.MaCongTy);
+                    command.Parameters.AddWithValue("@MaLoaiHang", qLMatHang.Maloaihang);
+                    command.Parameters.AddWithValue("@SoLuong", qLMatHang.Soluong);
+                    command.Parameters.AddWithValue("@DonViTinh", qLMatHang.DonviTinh);
 
-                sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
-            catch
+        }
+
+        public bool XoaMatHang(string maHang)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                return false;
+                try
+                {
+                    connection.Open();
+                    string query = "DELETE FROM mathang WHERE maHang = @MaHang";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@MaHang", maHang);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
-            finally
-            {
-                sqlConnection.Close();
-            }
-            return true;
         }
     }
 }

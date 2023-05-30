@@ -1,39 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlTypes;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using BTLCSharpxSql.FMatHang;
 using Excel = Microsoft.Office.Interop.Excel;
 
-
-namespace BTLCSharpxSql.FMatHang
+namespace BTLCSharpxSql
 {
     public partial class frmMatHang : Form
     {
         Modify modify;
-        QLmatHang qLmatHang;
-        connect cn = new connect(); // Khai báo biến cn kiểu Connect
-        string chuoiketnoi = @"Data Source=HUYBU;Initial Catalog=BTLQuanLyBanHang;Integrated Security=True";
+        QLmatHang qlMatHang;
 
         public frmMatHang()
         {
             InitializeComponent();
-            modify = new Modify();
         }
 
         private void frmMatHang_Load(object sender, EventArgs e)
         {
-            LoadMatHangData();
-        }
-
-        private void LoadMatHangData()
-        {
+            modify = new Modify();
             try
             {
                 dataGridView1.DataSource = modify.GetAllMatHang();
@@ -46,186 +32,72 @@ namespace BTLCSharpxSql.FMatHang
 
         private void button_them_Click(object sender, EventArgs e)
         {
-            // lấy tất cả dữ liệu đã nhập xuống:
-            // Nên check lỗi người dùng nhập! => nếu mà lỗi thì return;
-            string mahang = this.textBox_maH.Text;
-            string tenhang = this.textBox_tenH.Text;
-            string maCongTy = this.textBox_MaCTY.Text;
-            string maLoaiHang = this.textBox_maLH.Text;
-/*            int soLuong = Convert.ToInt32(this.textBox_soLuong.Text);*/
-            int soLuong;
-            if (!int.TryParse(this.textBox_soLuong.Text, out soLuong))
+            string maHang = this.txt_maHang.Text;
+            string tenHang = this.txt_tenHang.Text;
+            string maCongTy = this.txt_maCongTy.Text;
+            string maLoaiHang = this.txt_maLoaiHang.Text;
+            int soLuong = int.Parse(this.txt_soLuong.Text);
+            string donViTinh = this.txt_donViTinh.Text;
+            SqlMoney giaHang = SqlMoney.Parse(this.txt_giaHang.Text);
+
+            qlMatHang = new QLmatHang(maHang, tenHang, maCongTy, maLoaiHang, soLuong, donViTinh, giaHang);
+
+            if (modify.ThemMatHang(qlMatHang))
             {
-                MessageBox.Show("Số lượng không hợp lệ. Vui lòng nhập một số nguyên.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                dataGridView1.DataSource = modify.GetAllMatHang();
+                MessageBox.Show("Thêm mặt hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            string donViTinh = this.textBox_DVT.Text;
-            SqlMoney giaHang = SqlMoney.Parse(this.textBox_gia.Text);
-            qLmatHang = new QLmatHang(mahang, tenhang, maCongTy, maLoaiHang, soLuong, donViTinh, giaHang);
-
-
-
-            // tao demo thực hiện proceduce - chuỗi k phải sql nữa mà là tên proceduce
-            // chuẩn bị tên proceduce:
-            string query = "sp_mathang_sua";
-            // new đối tượng thư viên để gọi các hàm trong thư viện:
-            libDB lib = new libDB(chuoiketnoi);
-            SqlCommand cmd = lib.GetCmd(query); // lấy về đối tượng sqlcomman
-
-            // Cần phải truyền dũ liệu cho cmd 
-            truyenParameterMatHang(ref cmd, qLmatHang);
-
-
-            // thực hiện proceduce bằng cách là gọi  thư viên
-            try
+            else
             {
-                // đây là câu lệnh thêm nên 
-                int kq = lib.RunSQL(cmd);
-                if (kq > 0)
-                {
-                    MessageBox.Show("thêm thành công!");
-                    frmMatHang_Load(sender, e);
-                    xoaThongTin();
-                }
+                MessageBox.Show("Lỗi: Không thêm được mặt hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message, "lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-
-            }
-
         }
-        private void truyenParameterMatHang(ref SqlCommand cmd, QLmatHang qLmatHang)
-        {
 
-            cmd.Parameters.Add("@mahang", SqlDbType.NVarChar).Value = qLmatHang.MaHang;
-            cmd.Parameters.Add("@tenhang", SqlDbType.NVarChar).Value = qLmatHang.TenHang;
-            cmd.Parameters.Add("@macongty", SqlDbType.NVarChar).Value = qLmatHang.MaCongTy;
-            cmd.Parameters.Add("@maloaihang", SqlDbType.NVarChar).Value = qLmatHang.Maloaihang;
-            cmd.Parameters.Add("@soluong", SqlDbType.Int).Value = qLmatHang.Soluong;
-            cmd.Parameters.Add("@donvitinh", SqlDbType.NVarChar).Value = qLmatHang.DonviTinh;
-            cmd.Parameters.Add("@giahang", SqlDbType.Money).Value = qLmatHang.GiaHang;
+        private void button_sua_Click(object sender, EventArgs e)
+        {
+            string maHang = this.txt_maHang.Text;
+            string tenHang = this.txt_tenHang.Text;
+            string maCongTy = this.txt_maCongTy.Text;
+            string maLoaiHang = this.txt_maLoaiHang.Text;
+            int soLuong = int.Parse(this.txt_soLuong.Text);
+            string donViTinh = this.txt_donViTinh.Text;
+            SqlMoney giaHang = SqlMoney.Parse(this.txt_giaHang.Text);
+
+            qlMatHang = new QLmatHang(maHang, tenHang, maCongTy, maLoaiHang, soLuong, donViTinh, giaHang);
+
+            if (modify.SuaThongTinMatHang(qlMatHang))
+            {
+                dataGridView1.DataSource = modify.GetAllMatHang();
+                MessageBox.Show("Cập nhật mặt hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Lỗi: Không cập nhật được mặt hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button_xoa_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                DataGridViewRow row = dataGridView1.SelectedRows[0];
-                // Thay "sohoadon" bằng tên cột chứa số hóa đơn
-                string mahang = row.Cells["mahang"].Value.ToString();
-                /* string tenhang = row.Cells["tenhang"].Value.ToString();
-                 string macongty = row.Cells["macongty"].Value.ToString();
-                 int maloaihang = Convert.ToInt32(row.Cells["maloaihang"].Value);// Thay "mahang" bằng tên cột chứa mã hàng
-
-                 int soluong = Convert.ToInt32(row.Cells["soluong"].Value);
-                 string donvitinh = row.Cells["donvitinh"].Value.ToString();
-                 double giahang = Convert.ToDouble(row.Cells["giahang"].Value);*/
-
-                // Tạo câu truy vấn SQL hoặc gọi procedure để xóa dữ liệu
-                string query = "sp_mathang_Delete";
-                libDB lib = new libDB(chuoiketnoi);
-                SqlCommand cmd = lib.GetCmd(query);
-
-                /*  // Truyền tham số cho cmd
-                  cmd.Parameters.Add("@Tenhang", SqlDbType.NVarChar).Value = tenhang;
-                  cmd.Parameters.Add("@Macongty", SqlDbType.NVarChar).Value = macongty;
-                  cmd.Parameters.Add("@Maloaihang", SqlDbType.Int).Value = maloaihang;*/
-                cmd.Parameters.Add("@Mahang", SqlDbType.NVarChar, 10).Value = mahang;
-                /*cmd.Parameters.Add("@Soluong", SqlDbType.Int).Value = soluong;
-                cmd.Parameters.Add("@Donvitinh", SqlDbType.NVarChar).Value = donvitinh;
-                cmd.Parameters.Add("@Giahang", SqlDbType.Money).Value = giahang;*/
-
-                try
+                string maHang = dataGridView1.SelectedRows[0].Cells["maHang"].Value.ToString();
+                if (modify.XoaMatHang(maHang))
                 {
-                    int kq = lib.RunSQL(cmd);
-                    if (kq > 0)
-                    {
-                        MessageBox.Show("Xóa thành công!");
-                        frmMatHang_Load(sender, e);
-                    }
+                    dataGridView1.DataSource = modify.GetAllMatHang();
+                    MessageBox.Show("Xóa mặt hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    MessageBox.Show("Lỗi: Không xóa được mặt hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một dòng để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn một dòng để xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void button_sua_Click(object sender, EventArgs e)
-        {
-            // lấy tất cả dữ liệu đã nhập xuống:
-            // Nên check lỗi người dùng nhập! => nếu mà lỗi thì return;
-            string mahang = this.textBox_maH.Text;
-            string tenhang = this.textBox_tenH.Text;
-            string maCongTy = this.textBox_MaCTY.Text;
-            string maLoaiHang = this.textBox_maLH.Text;
-  /*          int soLuong = Convert.ToInt32(this.textBox_soLuong.Text);*/
-            int soLuong;
-            if (!int.TryParse(this.textBox_soLuong.Text, out soLuong))
-            {
-                MessageBox.Show("Số lượng không hợp lệ. Vui lòng nhập một số nguyên.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            // Tiếp tục xử lý với giá trị soLuong đã chuyển đổi thành công
-
-            string donViTinh = this.textBox_DVT.Text;
-            SqlMoney giaHang = SqlMoney.Parse(this.textBox_gia.Text);
-            qLmatHang = new QLmatHang(mahang, tenhang, maCongTy, maLoaiHang, soLuong, donViTinh, giaHang);
-
-
-
-            // tao demo thực hiện proceduce - chuỗi k phải sql nữa mà là tên proceduce
-            // chuẩn bị tên proceduce:
-            string query = "sp_mathang_sua";
-            // new đối tượng thư viên để gọi các hàm trong thư viện:
-            libDB lib = new libDB(chuoiketnoi);
-            SqlCommand cmd = lib.GetCmd(query); // lấy về đối tượng sqlcomman
-
-            // Cần phải truyền dũ liệu cho cmd 
-            truyenParameterMatHang(ref cmd, qLmatHang);
-
-
-            // thực hiện proceduce bằng cách là gọi  thư viên
-            try
-            {
-                // đây là câu lệnh thêm nên 
-                int kq = lib.RunSQL(cmd);
-                if (kq > 0)
-                {
-                    MessageBox.Show("sửa thành công!");
-                    frmMatHang_Load(sender, e);
-                    xoaThongTin();
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message, "lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-
-            }
-        }
-
-        private void xoaThongTin()
-        {
-            textBox_maH.Text = string.Empty;
-            textBox_tenH.Text = string.Empty;
-            textBox_MaCTY.Text = string.Empty;
-            textBox_maLH.Text = string.Empty;
-            textBox_soLuong.Text = string.Empty;
-            textBox_DVT.Text = string.Empty;
-            textBox_gia.Text = string.Empty;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button_xuatExcel_Click_1(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count > 0)
             {
@@ -237,14 +109,23 @@ namespace BTLCSharpxSql.FMatHang
                     Excel.Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
                     Excel.Worksheet sheet = (Excel.Worksheet)workbook.ActiveSheet;
 
-                    // Đổ dữ liệu từ DataGridView vào Excel
+                    // Đặt tên các cột trong Excel
+                    sheet.Cells[1, 1] = "Mã Hàng";
+                    sheet.Cells[1, 2] = "Tên Hàng";
+                    sheet.Cells[1, 3] = "Mã Công Ty";
+                    sheet.Cells[1, 4] = "Mã Loại Hàng";
+                    sheet.Cells[1, 5] = "Số Lượng";
+                    sheet.Cells[1, 6] = "Đơn Vị Tính";
+                    sheet.Cells[1, 7] = "Giá Hàng";
+
+
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         for (int j = 0; j < dataGridView1.Columns.Count; j++)
                         {
                             if (dataGridView1.Rows[i].Cells[j].Value != null)
                             {
-                                sheet.Cells[i + 1, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                sheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                             }
                         }
                     }
@@ -264,5 +145,6 @@ namespace BTLCSharpxSql.FMatHang
                 MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
     }
 }
