@@ -1,4 +1,4 @@
-﻿namespace BTLCSharpxSql.FMatHang
+﻿namespace BTLCSharpxSql
 {
     partial class frmNhaCungCap
     {
@@ -32,21 +32,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox_macongty = new System.Windows.Forms.TextBox();
-            this.textBox_tencongty = new System.Windows.Forms.TextBox();
-            this.textBox_tengiaodich = new System.Windows.Forms.TextBox();
+            this.txt_maCongTy = new System.Windows.Forms.TextBox();
+            this.txt_tenCongTy = new System.Windows.Forms.TextBox();
+            this.txt_tenGiaoDich = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox_diachi = new System.Windows.Forms.TextBox();
-            this.textBox_dienthoai = new System.Windows.Forms.TextBox();
-            this.textBox_fax = new System.Windows.Forms.TextBox();
+            this.txt_diaChi = new System.Windows.Forms.TextBox();
+            this.txt_dienThoai = new System.Windows.Forms.TextBox();
+            this.txt_fax = new System.Windows.Forms.TextBox();
             this.button_them = new System.Windows.Forms.Button();
             this.button_sua = new System.Windows.Forms.Button();
             this.button_xoa = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox_email = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txt_email = new System.Windows.Forms.TextBox();
+            this.button_xuatExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,29 +94,29 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Tên Giao Dịch:";
             // 
-            // textBox_macongty
+            // txt_maCongTy
             // 
-            this.textBox_macongty.Location = new System.Drawing.Point(221, 18);
-            this.textBox_macongty.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_macongty.Name = "textBox_macongty";
-            this.textBox_macongty.Size = new System.Drawing.Size(132, 22);
-            this.textBox_macongty.TabIndex = 4;
+            this.txt_maCongTy.Location = new System.Drawing.Point(221, 18);
+            this.txt_maCongTy.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_maCongTy.Name = "txt_maCongTy";
+            this.txt_maCongTy.Size = new System.Drawing.Size(132, 22);
+            this.txt_maCongTy.TabIndex = 4;
             // 
-            // textBox_tencongty
+            // txt_tenCongTy
             // 
-            this.textBox_tencongty.Location = new System.Drawing.Point(221, 59);
-            this.textBox_tencongty.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_tencongty.Name = "textBox_tencongty";
-            this.textBox_tencongty.Size = new System.Drawing.Size(132, 22);
-            this.textBox_tencongty.TabIndex = 5;
+            this.txt_tenCongTy.Location = new System.Drawing.Point(221, 59);
+            this.txt_tenCongTy.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_tenCongTy.Name = "txt_tenCongTy";
+            this.txt_tenCongTy.Size = new System.Drawing.Size(132, 22);
+            this.txt_tenCongTy.TabIndex = 5;
             // 
-            // textBox_tengiaodich
+            // txt_tenGiaoDich
             // 
-            this.textBox_tengiaodich.Location = new System.Drawing.Point(221, 98);
-            this.textBox_tengiaodich.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_tengiaodich.Name = "textBox_tengiaodich";
-            this.textBox_tengiaodich.Size = new System.Drawing.Size(132, 22);
-            this.textBox_tengiaodich.TabIndex = 6;
+            this.txt_tenGiaoDich.Location = new System.Drawing.Point(221, 98);
+            this.txt_tenGiaoDich.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_tenGiaoDich.Name = "txt_tenGiaoDich";
+            this.txt_tenGiaoDich.Size = new System.Drawing.Size(132, 22);
+            this.txt_tenGiaoDich.TabIndex = 6;
             // 
             // label4
             // 
@@ -148,29 +148,29 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Fax:";
             // 
-            // textBox_diachi
+            // txt_diaChi
             // 
-            this.textBox_diachi.Location = new System.Drawing.Point(221, 137);
-            this.textBox_diachi.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_diachi.Name = "textBox_diachi";
-            this.textBox_diachi.Size = new System.Drawing.Size(132, 22);
-            this.textBox_diachi.TabIndex = 10;
+            this.txt_diaChi.Location = new System.Drawing.Point(221, 137);
+            this.txt_diaChi.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_diaChi.Name = "txt_diaChi";
+            this.txt_diaChi.Size = new System.Drawing.Size(132, 22);
+            this.txt_diaChi.TabIndex = 10;
             // 
-            // textBox_dienthoai
+            // txt_dienThoai
             // 
-            this.textBox_dienthoai.Location = new System.Drawing.Point(547, 59);
-            this.textBox_dienthoai.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_dienthoai.Name = "textBox_dienthoai";
-            this.textBox_dienthoai.Size = new System.Drawing.Size(132, 22);
-            this.textBox_dienthoai.TabIndex = 11;
+            this.txt_dienThoai.Location = new System.Drawing.Point(547, 59);
+            this.txt_dienThoai.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_dienThoai.Name = "txt_dienThoai";
+            this.txt_dienThoai.Size = new System.Drawing.Size(132, 22);
+            this.txt_dienThoai.TabIndex = 11;
             // 
-            // textBox_fax
+            // txt_fax
             // 
-            this.textBox_fax.Location = new System.Drawing.Point(547, 107);
-            this.textBox_fax.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_fax.Name = "textBox_fax";
-            this.textBox_fax.Size = new System.Drawing.Size(132, 22);
-            this.textBox_fax.TabIndex = 12;
+            this.txt_fax.Location = new System.Drawing.Point(547, 107);
+            this.txt_fax.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_fax.Name = "txt_fax";
+            this.txt_fax.Size = new System.Drawing.Size(132, 22);
+            this.txt_fax.TabIndex = 12;
             // 
             // button_them
             // 
@@ -181,7 +181,7 @@
             this.button_them.TabIndex = 13;
             this.button_them.Text = "Thêm:";
             this.button_them.UseVisualStyleBackColor = true;
-            this.button_them.Click += new System.EventHandler(this.button_them_Click_1);
+            this.button_them.Click += new System.EventHandler(this.button_them_Click);
             // 
             // button_sua
             // 
@@ -192,7 +192,7 @@
             this.button_sua.TabIndex = 14;
             this.button_sua.Text = "Sửa";
             this.button_sua.UseVisualStyleBackColor = true;
-            this.button_sua.Click += new System.EventHandler(this.button_sua_Click_1);
+            this.button_sua.Click += new System.EventHandler(this.button_sua_Click);
             // 
             // button_xoa
             // 
@@ -203,7 +203,7 @@
             this.button_xoa.TabIndex = 15;
             this.button_xoa.Text = "Xóa";
             this.button_xoa.UseVisualStyleBackColor = true;
-            this.button_xoa.Click += new System.EventHandler(this.button_xoa_Click_1);
+            this.button_xoa.Click += new System.EventHandler(this.button_xoa_Click);
             // 
             // label7
             // 
@@ -215,44 +215,44 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "Email:";
             // 
-            // textBox_email
+            // txt_email
             // 
-            this.textBox_email.Location = new System.Drawing.Point(547, 15);
-            this.textBox_email.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_email.Name = "textBox_email";
-            this.textBox_email.Size = new System.Drawing.Size(132, 22);
-            this.textBox_email.TabIndex = 17;
+            this.txt_email.Location = new System.Drawing.Point(547, 15);
+            this.txt_email.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_email.Name = "txt_email";
+            this.txt_email.Size = new System.Drawing.Size(132, 22);
+            this.txt_email.TabIndex = 17;
             // 
-            // button1
+            // button_xuatExcel
             // 
-            this.button1.Location = new System.Drawing.Point(891, 92);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 49);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Xuất Excel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_xuatExcel.Location = new System.Drawing.Point(891, 92);
+            this.button_xuatExcel.Name = "button_xuatExcel";
+            this.button_xuatExcel.Size = new System.Drawing.Size(122, 49);
+            this.button_xuatExcel.TabIndex = 18;
+            this.button_xuatExcel.Text = "Xuất Excel";
+            this.button_xuatExcel.UseVisualStyleBackColor = true;
+            this.button_xuatExcel.Click += new System.EventHandler(this.button_xuatExcel_Click);
             // 
             // frmNhaCungCap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1056, 519);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox_email);
+            this.Controls.Add(this.button_xuatExcel);
+            this.Controls.Add(this.txt_email);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button_xoa);
             this.Controls.Add(this.button_sua);
             this.Controls.Add(this.button_them);
-            this.Controls.Add(this.textBox_fax);
-            this.Controls.Add(this.textBox_dienthoai);
-            this.Controls.Add(this.textBox_diachi);
+            this.Controls.Add(this.txt_fax);
+            this.Controls.Add(this.txt_dienThoai);
+            this.Controls.Add(this.txt_diaChi);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox_tengiaodich);
-            this.Controls.Add(this.textBox_tencongty);
-            this.Controls.Add(this.textBox_macongty);
+            this.Controls.Add(this.txt_tenGiaoDich);
+            this.Controls.Add(this.txt_tenCongTy);
+            this.Controls.Add(this.txt_maCongTy);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -273,20 +273,20 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox_macongty;
-        private System.Windows.Forms.TextBox textBox_tencongty;
-        private System.Windows.Forms.TextBox textBox_tengiaodich;
+        private System.Windows.Forms.TextBox txt_maCongTy;
+        private System.Windows.Forms.TextBox txt_tenCongTy;
+        private System.Windows.Forms.TextBox txt_tenGiaoDich;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox_diachi;
-        private System.Windows.Forms.TextBox textBox_dienthoai;
-        private System.Windows.Forms.TextBox textBox_fax;
+        private System.Windows.Forms.TextBox txt_diaChi;
+        private System.Windows.Forms.TextBox txt_dienThoai;
+        private System.Windows.Forms.TextBox txt_fax;
         private System.Windows.Forms.Button button_them;
         private System.Windows.Forms.Button button_sua;
         private System.Windows.Forms.Button button_xoa;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox_email;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txt_email;
+        private System.Windows.Forms.Button button_xuatExcel;
     }
 }

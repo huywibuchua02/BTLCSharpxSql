@@ -1,40 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlTypes;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using BTLCSharpxSql.FMatHang;
 using BTLCSharpxSql.FNhaCungCap;
 using Excel = Microsoft.Office.Interop.Excel;
 
-
-namespace BTLCSharpxSql.FMatHang
+namespace BTLCSharpxSql
 {
     public partial class frmNhaCungCap : Form
     {
         Modify_NCC modify_NCC;
         QLNhaCungCap qLNhaCungCap;
-        connect cn = new connect(); // Khai báo biến cn kiểu Connect
-        string chuoiketnoi = @"Data Source=HUYBU;Initial Catalog=BTLQuanLyBanHang;Integrated Security=True";
 
         public frmNhaCungCap()
         {
             InitializeComponent();
-            modify_NCC = new Modify_NCC();
         }
 
         private void frmNhaCungCap_Load(object sender, EventArgs e)
         {
-            LoadNhaCungCapData();
-        }
-
-        private void LoadNhaCungCapData()
-        {
+            modify_NCC = new Modify_NCC();
             try
             {
                 dataGridView1.DataSource = modify_NCC.GetAllNhaCungCap();
@@ -45,146 +31,75 @@ namespace BTLCSharpxSql.FMatHang
             }
         }
 
-        private void button_them_Click_1(object sender, EventArgs e)
+        private void button_them_Click(object sender, EventArgs e)
         {
-            // Lấy tất cả dữ liệu đã nhập xuống:
-            // Nên check lỗi người dùng nhập! Nếu có lỗi, thì return;
-            string macongty = this.textBox_macongty.Text;
-            string tencongty = this.textBox_tencongty.Text;
-            string tengiaodich = this.textBox_tengiaodich.Text;
-            string diachi = this.textBox_diachi.Text;
-            string dienthoai = this.textBox_dienthoai.Text;
-            string fax = this.textBox_fax.Text;
-            string email = this.textBox_email.Text;
+            string maCongTy = this.txt_maCongTy.Text;
+            string tenCongTy = this.txt_tenCongTy.Text;
+            string tenGiaoDich = this.txt_tenGiaoDich.Text;
+            string diaChi = this.txt_diaChi.Text;
+            string dienThoai = this.txt_dienThoai.Text;
+            string fax = this.txt_fax.Text;
+            string email = this.txt_email.Text;
 
-            qLNhaCungCap = new QLNhaCungCap(macongty, tencongty, tengiaodich, diachi, dienthoai, fax, email);
+            qLNhaCungCap = new QLNhaCungCap(maCongTy, tenCongTy, tenGiaoDich, diaChi, dienThoai, fax, email);
 
-            // Chuẩn bị tên procedure:
-            string query = "sp_nhacungcap_them";
-            // Tạo đối tượng thư viện để gọi các hàm trong thư viện:
-            libDB lib = new libDB(chuoiketnoi);
-            SqlCommand cmd = lib.GetCmd(query); // Lấy về đối tượng SqlCommand
-
-            // Truyền dữ liệu cho cmd 
-            truyenParameterNhaCungCap(ref cmd, qLNhaCungCap);
-
-            // Thực hiện procedure bằng cách gọi thư viện
-            try
+            if (modify_NCC.ThemNhaCungCap(qLNhaCungCap))
             {
-                int kq = lib.RunSQL(cmd);
-                if (kq > 0)
-                {
-                    MessageBox.Show("Thêm thành công!");
-                    frmNhaCungCap_Load(sender, e);
-                    xoaThongTin();
-                }
+                dataGridView1.DataSource = modify_NCC.GetAllNhaCungCap();
+                MessageBox.Show("Thêm nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Lỗi: Không thêm được nhà cung cấp", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void truyenParameterNhaCungCap(ref SqlCommand cmd, QLNhaCungCap qLNhaCungCap)
+        private void button_sua_Click(object sender, EventArgs e)
         {
-            cmd.Parameters.Add("@macongty", SqlDbType.NVarChar).Value = qLNhaCungCap.Macongty;
-            cmd.Parameters.Add("@tencongty", SqlDbType.NVarChar).Value = qLNhaCungCap.Tencongty;
-            cmd.Parameters.Add("@tengiaodich", SqlDbType.NVarChar).Value = qLNhaCungCap.Tengiaodich;
-            cmd.Parameters.Add("@diachi", SqlDbType.NVarChar).Value = qLNhaCungCap.Diachi;
-            cmd.Parameters.Add("@dienthoai", SqlDbType.NVarChar).Value = qLNhaCungCap.Dienthoai;
-            cmd.Parameters.Add("@fax", SqlDbType.NVarChar).Value = qLNhaCungCap.Fax;
-            cmd.Parameters.Add("@email", SqlDbType.NVarChar).Value = qLNhaCungCap.Email;
+            string maCongTy = this.txt_maCongTy.Text;
+            string tenCongTy = this.txt_tenCongTy.Text;
+            string tenGiaoDich = this.txt_tenGiaoDich.Text;
+            string diaChi = this.txt_diaChi.Text;
+            string dienThoai = this.txt_dienThoai.Text;
+            string fax = this.txt_fax.Text;
+            string email = this.txt_email.Text;
+
+            qLNhaCungCap = new QLNhaCungCap(maCongTy, tenCongTy, tenGiaoDich, diaChi, dienThoai, fax, email);
+
+            if (modify_NCC.SuaThongTinNhaCungCap(qLNhaCungCap))
+            {
+                dataGridView1.DataSource = modify_NCC.GetAllNhaCungCap();
+                MessageBox.Show("Cập nhật nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Lỗi: Không cập nhật được nhà cung cấp", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void button_xoa_Click_1(object sender, EventArgs e)
+        private void button_xoa_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                DataGridViewRow row = dataGridView1.SelectedRows[0];
-                string macongty = row.Cells["macongty"].Value.ToString();
+                string maCongTy = dataGridView1.SelectedRows[0].Cells["maCongTy"].Value.ToString();
 
-                // Tạo câu truy vấn SQL hoặc gọi procedure để xóa dữ liệu
-                string query = "sp_nhacungcap_xoa";
-                libDB lib = new libDB(chuoiketnoi);
-                SqlCommand cmd = lib.GetCmd(query);
-
-                cmd.Parameters.Add("@macongty", SqlDbType.NVarChar, 10).Value = macongty;
-
-                try
+                if (modify_NCC.XoaNhaCungCap(maCongTy))
                 {
-                    int kq = lib.RunSQL(cmd);
-                    if (kq > 0)
-                    {
-                        MessageBox.Show("Xóa thành công!");
-                        frmNhaCungCap_Load(sender, e);
-                    }
+                    dataGridView1.DataSource = modify_NCC.GetAllNhaCungCap();
+                    MessageBox.Show("Xóa nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    MessageBox.Show("Lỗi: Không xóa được nhà cung cấp", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một dòng để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn nhà cung cấp để xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void button_sua_Click_1(object sender, EventArgs e)
-        {
-            // Lấy tất cả dữ liệu đã nhập xuống:
-            // Nên check lỗi người dùng nhập! Nếu có lỗi, thì return;
-            string macongty = this.textBox_macongty.Text;
-            string tencongty = this.textBox_tencongty.Text;
-            string tengiaodich = this.textBox_tengiaodich.Text;
-            string diachi = this.textBox_diachi.Text;
-            string dienthoai = this.textBox_dienthoai.Text;
-            string fax = this.textBox_fax.Text;
-            string email = this.textBox_email.Text;
-
-            qLNhaCungCap = new QLNhaCungCap(macongty, tencongty, tengiaodich, diachi, dienthoai, fax, email);
-
-            // Chuẩn bị tên procedure:
-            string query = "sp_nhacungcap_sua";
-            // Tạo đối tượng thư viện để gọi các hàm trong thư viện:
-            libDB lib = new libDB(chuoiketnoi);
-            SqlCommand cmd = lib.GetCmd(query); // Lấy về đối tượng SqlCommand
-
-            // Truyền dữ liệu cho cmd 
-            truyenParameterNhaCungCap(ref cmd, qLNhaCungCap);
-
-            // Thực hiện procedure bằng cách gọi thư viện
-            try
-            {
-                int kq = lib.RunSQL(cmd);
-                if (kq > 0)
-                {
-                    MessageBox.Show("Sửa thành công!");
-                    frmNhaCungCap_Load(sender, e);
-                    xoaThongTin();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
-
-        private void xoaThongTin()
-        {
-            textBox_macongty.Text = string.Empty;
-            textBox_tencongty.Text = string.Empty;
-            textBox_tengiaodich.Text = string.Empty;
-            textBox_diachi.Text = string.Empty;
-            textBox_dienthoai.Text = string.Empty;
-            textBox_fax.Text = string.Empty;
-            textBox_email.Text = string.Empty;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button_xuatExcel_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count > 0)
             {
@@ -196,14 +111,23 @@ namespace BTLCSharpxSql.FMatHang
                     Excel.Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
                     Excel.Worksheet sheet = (Excel.Worksheet)workbook.ActiveSheet;
 
-                    // Đổ dữ liệu từ DataGridView vào Excel
+                    // Đặt tên các cột trong Excel
+                    sheet.Cells[1, 1] = "Mã Công Ty";
+                    sheet.Cells[1, 2] = "Tên Công Ty";
+                    sheet.Cells[1, 3] = "Tên Giao Dịch";
+                    sheet.Cells[1, 4] = "Địa Chỉ";
+                    sheet.Cells[1, 5] = "Điện Thoại";
+                    sheet.Cells[1, 6] = "Fax";
+                    sheet.Cells[1, 7] = "Email";
+
+
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         for (int j = 0; j < dataGridView1.Columns.Count; j++)
                         {
                             if (dataGridView1.Rows[i].Cells[j].Value != null)
                             {
-                                sheet.Cells[i + 1, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                                sheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
                             }
                         }
                     }

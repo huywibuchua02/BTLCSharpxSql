@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace BTLCSharpxSql
 {
-    internal class libDB
+    internal class éc
     {
         private string ConnectionString;
 
-        public libDB(string ConnectionString)
+        public éc(string ConnectionString)
         {
             this.ConnectionString = ConnectionString;
         }

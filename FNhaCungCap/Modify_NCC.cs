@@ -1,62 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Data;
 
 namespace BTLCSharpxSql.FNhaCungCap
 {
     internal class Modify_NCC
     {
-        SqlDataAdapter dataAdapter; // Truy xuất dữ liệu vào bảng
-        SqlCommand sqlCommand; // Truy vấn cập nhật tới CSDL
+        private readonly SqlConnection connection;
 
         public Modify_NCC()
         {
+            connection = connect.GetConnection();
         }
 
-        // Lấy tất cả nhà cung cấp
         public DataTable GetAllNhaCungCap()
         {
             DataTable dataTable = new DataTable();
-            string query = "select * from nhacungcap";
-            using (SqlConnection sqlConnection = connect.GetConnection())
+            string query = "SELECT * FROM nhacungcap";
+            using (SqlConnection sqlConnection = connection)
             {
-                sqlConnection.Open();//mở kết nối
+                sqlConnection.Open();
 
-                dataAdapter = new SqlDataAdapter(query, sqlConnection);
-                //truy xuất 
-                dataAdapter.Fill(dataTable);
-
-                sqlConnection.Close();
+                using (SqlDataAdapter dataAdapter = new SqlDataAdapter(query, sqlConnection))
+                {
+                    dataAdapter.Fill(dataTable);
+                }
             }
             return dataTable;
         }
 
-        // Cập nhật thông tin nhà cung cấp
-        public bool Update(QLNhaCungCap qLNhaCungCap)
+        private bool ExecuteNonQuery(SqlCommand command)
         {
-            SqlConnection sqlConnection = connect.GetConnection();
-
-            string query = "update nhacungcap set tencongty = @tencongty, tengiaodich = @tengiaodich, diachi = @diachi, dienthoai = @dienthoai,"
-                + "fax = @fax, email = @email "
-                + "WHERE macongty = @macongty;";
-
-            //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
             try
             {
-                sqlConnection.Open();
-                sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.Add("@macongty", SqlDbType.NVarChar).Value = qLNhaCungCap.Macongty;
-                sqlCommand.Parameters.Add("@tencongty", SqlDbType.NVarChar).Value = qLNhaCungCap.Tencongty;
-                sqlCommand.Parameters.Add("@tengiaodich", SqlDbType.NVarChar).Value = qLNhaCungCap.Tengiaodich;
-                sqlCommand.Parameters.Add("@diachi", SqlDbType.NVarChar).Value = qLNhaCungCap.Diachi;
-                sqlCommand.Parameters.Add("@dienthoai", SqlDbType.NVarChar).Value = qLNhaCungCap.Dienthoai;
-                sqlCommand.Parameters.Add("@fax", SqlDbType.NVarChar).Value = qLNhaCungCap.Fax;
-                sqlCommand.Parameters.Add("@email", SqlDbType.NVarChar).Value = qLNhaCungCap.Email;
-                sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
+                command.Connection = connection;
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
             }
             catch
             {
@@ -64,36 +43,60 @@ namespace BTLCSharpxSql.FNhaCungCap
             }
             finally
             {
-                sqlConnection.Close();
+                connection.Close();
             }
-            return true;
         }
 
-        // Xóa nhà cung cấp
-        public bool Delete(string macongty)
+        public bool ExecuteStoredProc(string storedProcedure, QLNhaCungCap qLNhaCungCap)
         {
-            SqlConnection sqlConnection = connect.GetConnection();
-
-            string query = "delete nhacungcap where macongty=@macongty";
-
-            //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
             try
             {
-                sqlConnection.Open();
-                sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.Add("@macongty", SqlDbType.NVarChar).Value = macongty;
+                using (SqlCommand command = new SqlCommand(storedProcedure, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@macongty", SqlDbType.NVarChar).Value = qLNhaCungCap.Macongty;
+                    command.Parameters.Add("@tencongty", SqlDbType.NVarChar).Value = qLNhaCungCap.Tencongty;
+                    command.Parameters.Add("@tengiaodich", SqlDbType.NVarChar).Value = qLNhaCungCap.Tengiaodich;
+                    command.Parameters.Add("@diachi", SqlDbType.NVarChar).Value = qLNhaCungCap.Diachi;
+                    command.Parameters.Add("@dienthoai", SqlDbType.NVarChar).Value = qLNhaCungCap.Dienthoai;
+                    command.Parameters.Add("@fax", SqlDbType.NVarChar).Value = qLNhaCungCap.Fax;
+                    command.Parameters.Add("@email", SqlDbType.NVarChar).Value = qLNhaCungCap.Email;
 
-                sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
+                    return ExecuteNonQuery(command);
+                }
             }
             catch
             {
                 return false;
             }
-            finally
+        }
+
+        public bool ThemNhaCungCap(QLNhaCungCap qLNhaCungCap)
+        {
+            return ExecuteStoredProc("sp_nhacungcap_them", qLNhaCungCap);
+        }
+
+        public bool SuaThongTinNhaCungCap(QLNhaCungCap qLNhaCungCap)
+        {
+            return ExecuteStoredProc("sp_nhacungcap_sua", qLNhaCungCap);
+        }
+
+        public bool XoaNhaCungCap(string macongty)
+        {
+            try
             {
-                sqlConnection.Close();
+                using (SqlCommand command = new SqlCommand("sp_nhacungcap_xoa", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@macongty", SqlDbType.NVarChar).Value = macongty;
+
+                    return ExecuteNonQuery(command);
+                }
             }
-            return true;
+            catch
+            {
+                return false;
+            }
         }
     }
 }
