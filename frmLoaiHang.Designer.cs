@@ -1,4 +1,4 @@
-﻿namespace BTLCSharpxSql.FLoaiHang
+﻿namespace BTLCSharpxSql
 {
     partial class frmLoaiHang
     {
@@ -30,13 +30,13 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_maLoaiHang = new System.Windows.Forms.TextBox();
-            this.txt_tenLoaiHang = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.txt_maloaihang = new System.Windows.Forms.TextBox();
+            this.txt_tenloaihang = new System.Windows.Forms.TextBox();
+            this.button_them = new System.Windows.Forms.Button();
+            this.button_sua = new System.Windows.Forms.Button();
+            this.button_xoa = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button_xuatExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,54 +58,54 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Tên loại hàng:";
             // 
-            // txt_maLoaiHang
+            // txt_maloaihang
             // 
-            this.txt_maLoaiHang.Location = new System.Drawing.Point(149, 43);
-            this.txt_maLoaiHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txt_maLoaiHang.Name = "txt_maLoaiHang";
-            this.txt_maLoaiHang.Size = new System.Drawing.Size(139, 22);
-            this.txt_maLoaiHang.TabIndex = 2;
+            this.txt_maloaihang.Location = new System.Drawing.Point(149, 43);
+            this.txt_maloaihang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txt_maloaihang.Name = "txt_maloaihang";
+            this.txt_maloaihang.Size = new System.Drawing.Size(139, 22);
+            this.txt_maloaihang.TabIndex = 2;
             // 
-            // txt_tenLoaiHang
+            // txt_tenloaihang
             // 
-            this.txt_tenLoaiHang.Location = new System.Drawing.Point(149, 103);
-            this.txt_tenLoaiHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txt_tenLoaiHang.Name = "txt_tenLoaiHang";
-            this.txt_tenLoaiHang.Size = new System.Drawing.Size(139, 22);
-            this.txt_tenLoaiHang.TabIndex = 3;
+            this.txt_tenloaihang.Location = new System.Drawing.Point(149, 103);
+            this.txt_tenloaihang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txt_tenloaihang.Name = "txt_tenloaihang";
+            this.txt_tenloaihang.Size = new System.Drawing.Size(139, 22);
+            this.txt_tenloaihang.TabIndex = 3;
             // 
-            // button1
+            // button_them
             // 
-            this.button1.Location = new System.Drawing.Point(430, 57);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 62);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Thêm";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_them.Location = new System.Drawing.Point(430, 57);
+            this.button_them.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_them.Name = "button_them";
+            this.button_them.Size = new System.Drawing.Size(133, 62);
+            this.button_them.TabIndex = 4;
+            this.button_them.Text = "Thêm";
+            this.button_them.UseVisualStyleBackColor = true;
+            this.button_them.Click += new System.EventHandler(this.button_them_Click);
             // 
-            // button2
+            // button_sua
             // 
-            this.button2.Location = new System.Drawing.Point(591, 57);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(133, 62);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Sửa";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button_sua.Location = new System.Drawing.Point(591, 57);
+            this.button_sua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_sua.Name = "button_sua";
+            this.button_sua.Size = new System.Drawing.Size(133, 62);
+            this.button_sua.TabIndex = 5;
+            this.button_sua.Text = "Sửa";
+            this.button_sua.UseVisualStyleBackColor = true;
+            this.button_sua.Click += new System.EventHandler(this.button_sua_Click);
             // 
-            // button3
+            // button_xoa
             // 
-            this.button3.Location = new System.Drawing.Point(756, 57);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(133, 62);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Xóa";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button_xoa.Location = new System.Drawing.Point(756, 57);
+            this.button_xoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_xoa.Name = "button_xoa";
+            this.button_xoa.Size = new System.Drawing.Size(133, 62);
+            this.button_xoa.TabIndex = 6;
+            this.button_xoa.Text = "Xóa";
+            this.button_xoa.UseVisualStyleBackColor = true;
+            this.button_xoa.Click += new System.EventHandler(this.button_xoa_Click);
             // 
             // dataGridView1
             // 
@@ -122,28 +122,28 @@
             this.dataGridView1.Size = new System.Drawing.Size(1027, 321);
             this.dataGridView1.TabIndex = 7;
             // 
-            // button4
+            // button_xuatExcel
             // 
-            this.button4.Location = new System.Drawing.Point(913, 57);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(127, 62);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Xuất Excel";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button_xuatExcel.Location = new System.Drawing.Point(913, 57);
+            this.button_xuatExcel.Name = "button_xuatExcel";
+            this.button_xuatExcel.Size = new System.Drawing.Size(127, 62);
+            this.button_xuatExcel.TabIndex = 8;
+            this.button_xuatExcel.Text = "Xuất Excel";
+            this.button_xuatExcel.UseVisualStyleBackColor = true;
+            this.button_xuatExcel.Click += new System.EventHandler(this.button_xuatExcel_Click_1);
             // 
             // frmLoaiHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1056, 519);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button_xuatExcel);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.txt_tenLoaiHang);
-            this.Controls.Add(this.txt_maLoaiHang);
+            this.Controls.Add(this.button_xoa);
+            this.Controls.Add(this.button_sua);
+            this.Controls.Add(this.button_them);
+            this.Controls.Add(this.txt_tenloaihang);
+            this.Controls.Add(this.txt_maloaihang);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -160,12 +160,12 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_maLoaiHang;
-        private System.Windows.Forms.TextBox txt_tenLoaiHang;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txt_maloaihang;
+        private System.Windows.Forms.TextBox txt_tenloaihang;
+        private System.Windows.Forms.Button button_them;
+        private System.Windows.Forms.Button button_sua;
+        private System.Windows.Forms.Button button_xoa;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button_xuatExcel;
     }
 }

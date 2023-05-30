@@ -1,32 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BTLCSharpxSql.FLoaiHang;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 
-namespace BTLCSharpxSql.FLoaiHang
+namespace BTLCSharpxSql.FNhanVien
 {
     internal class Modify_LH
     {
-        SqlDataAdapter dataAdapter;
-        SqlCommand sqlCommand;
+        private readonly SqlConnection connection;
+
         public Modify_LH()
         {
+            connection = connect.GetConnection();
         }
 
-        // Lấy tất cả loại hàng
         public DataTable GetAllLoaiHang()
         {
             DataTable dataTable = new DataTable();
             string query = "SELECT * FROM loaihang";
             using (SqlConnection sqlConnection = connect.GetConnection())
             {
-                sqlConnection.Open();//mở kết nối
+                sqlConnection.Open();
 
-                dataAdapter = new SqlDataAdapter(query, sqlConnection);
-                //truy xuất 
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, sqlConnection);
                 dataAdapter.Fill(dataTable);
 
                 sqlConnection.Close();
@@ -34,21 +29,14 @@ namespace BTLCSharpxSql.FLoaiHang
             return dataTable;
         }
 
-        // Cập nhật thông tin loại hàng
-        public bool Update(QLloaiHang qLloaiHang)
+        private bool ExecuteNonQuery(SqlCommand command)
         {
-            SqlConnection sqlConnection = connect.GetConnection();
-
-            string query = "UPDATE loaihang SET tenloaihang = @tenloaihang WHERE maloaihang = @maloaihang;";
-
-            //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
             try
             {
-                sqlConnection.Open();
-                sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.Add("@maloaihang", SqlDbType.Int).Value = qLloaiHang.Maloaihang;
-                sqlCommand.Parameters.Add("@tenloaihang", SqlDbType.NVarChar).Value = qLloaiHang.Tenloaihang;
-                sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
+                command.Connection = connection;
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
             }
             catch
             {
@@ -56,26 +44,46 @@ namespace BTLCSharpxSql.FLoaiHang
             }
             finally
             {
-                sqlConnection.Close();
+                connection.Close();
             }
-            return true;
         }
 
-        // Xóa loại hàng
-        public bool Delete(int maloaihang)
+        public bool ExecuteStoredProc(string storedProcedure, QLloaiHang qlLoaiHang)
         {
-            SqlConnection sqlConnection = connect.GetConnection();
-
-            string query = "DELETE loaihang WHERE maloaihang = @maloaihang";
-
-            //khi thực thi dù ảnh hưởng lỗi như nào thì luôn luôn đóng(ở finally)
             try
             {
-                sqlConnection.Open();
-                sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.Add("@maloaihang", SqlDbType.Int).Value = maloaihang;
+                SqlCommand command = new SqlCommand(storedProcedure, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@maloaihang", SqlDbType.Int).Value = qlLoaiHang.Maloaihang;
+                command.Parameters.Add("@tenloaihang", SqlDbType.NVarChar).Value = qlLoaiHang.Tenloaihang;
 
-                sqlCommand.ExecuteNonQuery();//thực thi lệnh truy vấn
+                return ExecuteNonQuery(command);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool ThemLoaiHang(QLloaiHang qlLoaiHang)
+        {
+            return ExecuteStoredProc("sp_loaihang_them", qlLoaiHang);
+        }
+
+        public bool SuaThongTinLoaiHang(QLloaiHang qlLoaiHang)
+        {
+            return ExecuteStoredProc("sp_loaihang_sua", qlLoaiHang);
+        }
+
+        public bool XoaLoaiHang(int maloaihang)
+        {
+            try
+            {
+                SqlCommand command = new SqlCommand("sp_loaihang_xoa", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@maloaihang", SqlDbType.Int).Value = maloaihang;
+
+                return ExecuteNonQuery(command);
             }
             catch
             {
@@ -83,9 +91,8 @@ namespace BTLCSharpxSql.FLoaiHang
             }
             finally
             {
-                sqlConnection.Close();
+                connection.Close();
             }
-            return true;
         }
     }
 }
