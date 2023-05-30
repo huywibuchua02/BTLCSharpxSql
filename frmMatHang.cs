@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace BTLCSharpxSql.FMatHang
 {
@@ -223,5 +225,44 @@ namespace BTLCSharpxSql.FMatHang
             textBox_gia.Text = string.Empty;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                try
+                {
+                    // Tạo đối tượng Excel
+                    Excel.Application excel = new Excel.Application();
+                    excel.Visible = true;
+                    Excel.Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+                    Excel.Worksheet sheet = (Excel.Worksheet)workbook.ActiveSheet;
+
+                    // Đổ dữ liệu từ DataGridView vào Excel
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                        {
+                            if (dataGridView1.Rows[i].Cells[j].Value != null)
+                            {
+                                sheet.Cells[i + 1, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            }
+                        }
+                    }
+
+                    // Lưu file Excel
+                    string savePath = @"D:\Excel\MatHang.xlsx";
+                    workbook.SaveAs(savePath);
+                    MessageBox.Show("Xuất file Excel thành công! Đường dẫn: " + savePath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

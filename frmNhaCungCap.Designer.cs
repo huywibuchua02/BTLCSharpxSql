@@ -46,6 +46,7 @@
             this.button_xoa = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox_email = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -173,33 +174,36 @@
             // 
             // button_them
             // 
-            this.button_them.Location = new System.Drawing.Point(820, 30);
+            this.button_them.Location = new System.Drawing.Point(745, 22);
             this.button_them.Margin = new System.Windows.Forms.Padding(4);
             this.button_them.Name = "button_them";
-            this.button_them.Size = new System.Drawing.Size(100, 28);
+            this.button_them.Size = new System.Drawing.Size(128, 53);
             this.button_them.TabIndex = 13;
             this.button_them.Text = "Thêm:";
             this.button_them.UseVisualStyleBackColor = true;
+            this.button_them.Click += new System.EventHandler(this.button_them_Click_1);
             // 
             // button_sua
             // 
-            this.button_sua.Location = new System.Drawing.Point(820, 73);
+            this.button_sua.Location = new System.Drawing.Point(745, 92);
             this.button_sua.Margin = new System.Windows.Forms.Padding(4);
             this.button_sua.Name = "button_sua";
-            this.button_sua.Size = new System.Drawing.Size(100, 28);
+            this.button_sua.Size = new System.Drawing.Size(128, 49);
             this.button_sua.TabIndex = 14;
             this.button_sua.Text = "Sửa";
             this.button_sua.UseVisualStyleBackColor = true;
+            this.button_sua.Click += new System.EventHandler(this.button_sua_Click_1);
             // 
             // button_xoa
             // 
-            this.button_xoa.Location = new System.Drawing.Point(820, 114);
+            this.button_xoa.Location = new System.Drawing.Point(891, 22);
             this.button_xoa.Margin = new System.Windows.Forms.Padding(4);
             this.button_xoa.Name = "button_xoa";
-            this.button_xoa.Size = new System.Drawing.Size(100, 28);
+            this.button_xoa.Size = new System.Drawing.Size(122, 53);
             this.button_xoa.TabIndex = 15;
             this.button_xoa.Text = "Xóa";
             this.button_xoa.UseVisualStyleBackColor = true;
+            this.button_xoa.Click += new System.EventHandler(this.button_xoa_Click_1);
             // 
             // label7
             // 
@@ -219,11 +223,22 @@
             this.textBox_email.Size = new System.Drawing.Size(132, 22);
             this.textBox_email.TabIndex = 17;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(891, 92);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 49);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Xuất Excel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmNhaCungCap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1056, 519);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox_email);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button_xoa);
@@ -272,5 +287,6 @@
         private System.Windows.Forms.Button button_xoa;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox_email;
+        private System.Windows.Forms.Button button1;
     }
 }

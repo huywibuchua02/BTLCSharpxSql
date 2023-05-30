@@ -54,7 +54,7 @@ namespace BTLCSharpxSql
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click_1(object sender, EventArgs e)
         {
             string manhanvien = this.txt_maNV.Text;
             string ho = this.txt_ho.Text;
@@ -77,7 +77,7 @@ namespace BTLCSharpxSql
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click_1(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
@@ -137,5 +137,6 @@ namespace BTLCSharpxSql
                 MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
     }
 }

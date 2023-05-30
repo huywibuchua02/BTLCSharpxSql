@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using BTLCSharpxSql.FNhaCungCap;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace BTLCSharpxSql.FMatHang
 {
@@ -43,7 +45,7 @@ namespace BTLCSharpxSql.FMatHang
             }
         }
 
-        private void button_them_Click(object sender, EventArgs e)
+        private void button_them_Click_1(object sender, EventArgs e)
         {
             // Lấy tất cả dữ liệu đã nhập xuống:
             // Nên check lỗi người dùng nhập! Nếu có lỗi, thì return;
@@ -95,7 +97,7 @@ namespace BTLCSharpxSql.FMatHang
             cmd.Parameters.Add("@email", SqlDbType.NVarChar).Value = qLNhaCungCap.Email;
         }
 
-        private void button_xoa_Click(object sender, EventArgs e)
+        private void button_xoa_Click_1(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
@@ -130,7 +132,7 @@ namespace BTLCSharpxSql.FMatHang
             }
         }
 
-        private void button_sua_Click(object sender, EventArgs e)
+        private void button_sua_Click_1(object sender, EventArgs e)
         {
             // Lấy tất cả dữ liệu đã nhập xuống:
             // Nên check lỗi người dùng nhập! Nếu có lỗi, thì return;
@@ -180,6 +182,46 @@ namespace BTLCSharpxSql.FMatHang
             textBox_dienthoai.Text = string.Empty;
             textBox_fax.Text = string.Empty;
             textBox_email.Text = string.Empty;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                try
+                {
+                    // Tạo đối tượng Excel
+                    Excel.Application excel = new Excel.Application();
+                    excel.Visible = true;
+                    Excel.Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+                    Excel.Worksheet sheet = (Excel.Worksheet)workbook.ActiveSheet;
+
+                    // Đổ dữ liệu từ DataGridView vào Excel
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                        {
+                            if (dataGridView1.Rows[i].Cells[j].Value != null)
+                            {
+                                sheet.Cells[i + 1, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            }
+                        }
+                    }
+
+                    // Lưu file Excel
+                    string savePath = @"D:\Excel\NhaCungCap.xlsx";
+                    workbook.SaveAs(savePath);
+                    MessageBox.Show("Xuất file Excel thành công! Đường dẫn: " + savePath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ namespace BTLCSharpxSql.FKhachHang
 
 
 
-        public QLkhachHang(string maKhachHang, string TenCongTy, string tenGiaoDich, string diaChi, string email, string dienThoai, string fax, string tenKhachHang)
+        public QLkhachHang(string maKhachHang, string TenCongTy, string tenGiaoDich, string diaChi, string email, string dienThoai, string fax)
         {
             this.maKhachHang = maKhachHang;
             this.TenCongTy = TenCongTy;
@@ -28,7 +28,6 @@ namespace BTLCSharpxSql.FKhachHang
             this.email = email;
             this.dienThoai = dienThoai;
             this.fax = fax;
-            this.tenKhachHang = tenKhachHang;
         }
 
         public string MaKhachHang { get => maKhachHang; set => maKhachHang = value; }

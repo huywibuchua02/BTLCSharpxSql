@@ -21,5 +21,20 @@ namespace BTLCSharpxSql
         {
 
         }
+
+        private void button_sua_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_xoa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

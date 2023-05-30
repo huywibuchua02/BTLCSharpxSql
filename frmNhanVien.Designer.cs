@@ -60,7 +60,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(13, 183);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -101,7 +101,7 @@
             // txt_maNV
             // 
             this.txt_maNV.Location = new System.Drawing.Point(171, 21);
-            this.txt_maNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_maNV.Margin = new System.Windows.Forms.Padding(4);
             this.txt_maNV.Name = "txt_maNV";
             this.txt_maNV.Size = new System.Drawing.Size(132, 22);
             this.txt_maNV.TabIndex = 4;
@@ -109,7 +109,7 @@
             // txt_ho
             // 
             this.txt_ho.Location = new System.Drawing.Point(171, 64);
-            this.txt_ho.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_ho.Margin = new System.Windows.Forms.Padding(4);
             this.txt_ho.Name = "txt_ho";
             this.txt_ho.Size = new System.Drawing.Size(132, 22);
             this.txt_ho.TabIndex = 5;
@@ -117,7 +117,7 @@
             // txt_ten
             // 
             this.txt_ten.Location = new System.Drawing.Point(171, 107);
-            this.txt_ten.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_ten.Margin = new System.Windows.Forms.Padding(4);
             this.txt_ten.Name = "txt_ten";
             this.txt_ten.Size = new System.Drawing.Size(132, 22);
             this.txt_ten.TabIndex = 6;
@@ -145,7 +145,7 @@
             // dtp_ngaySinh
             // 
             this.dtp_ngaySinh.Location = new System.Drawing.Point(484, 20);
-            this.dtp_ngaySinh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtp_ngaySinh.Margin = new System.Windows.Forms.Padding(4);
             this.dtp_ngaySinh.Name = "dtp_ngaySinh";
             this.dtp_ngaySinh.Size = new System.Drawing.Size(213, 22);
             this.dtp_ngaySinh.TabIndex = 9;
@@ -153,7 +153,7 @@
             // dtp_ngayLamViec
             // 
             this.dtp_ngayLamViec.Location = new System.Drawing.Point(484, 64);
-            this.dtp_ngayLamViec.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtp_ngayLamViec.Margin = new System.Windows.Forms.Padding(4);
             this.dtp_ngayLamViec.Name = "dtp_ngayLamViec";
             this.dtp_ngayLamViec.Size = new System.Drawing.Size(213, 22);
             this.dtp_ngayLamViec.TabIndex = 10;
@@ -201,7 +201,7 @@
             // txt_diaChi
             // 
             this.txt_diaChi.Location = new System.Drawing.Point(484, 107);
-            this.txt_diaChi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_diaChi.Margin = new System.Windows.Forms.Padding(4);
             this.txt_diaChi.Name = "txt_diaChi";
             this.txt_diaChi.Size = new System.Drawing.Size(132, 22);
             this.txt_diaChi.TabIndex = 15;
@@ -209,7 +209,7 @@
             // txt_dienThoai
             // 
             this.txt_dienThoai.Location = new System.Drawing.Point(888, 20);
-            this.txt_dienThoai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_dienThoai.Margin = new System.Windows.Forms.Padding(4);
             this.txt_dienThoai.Name = "txt_dienThoai";
             this.txt_dienThoai.Size = new System.Drawing.Size(132, 22);
             this.txt_dienThoai.TabIndex = 16;
@@ -217,7 +217,7 @@
             // txt_luongCoBan
             // 
             this.txt_luongCoBan.Location = new System.Drawing.Point(888, 64);
-            this.txt_luongCoBan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_luongCoBan.Margin = new System.Windows.Forms.Padding(4);
             this.txt_luongCoBan.Name = "txt_luongCoBan";
             this.txt_luongCoBan.Size = new System.Drawing.Size(132, 22);
             this.txt_luongCoBan.TabIndex = 17;
@@ -225,17 +225,17 @@
             // txt_phuCap
             // 
             this.txt_phuCap.Location = new System.Drawing.Point(888, 107);
-            this.txt_phuCap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_phuCap.Margin = new System.Windows.Forms.Padding(4);
             this.txt_phuCap.Name = "txt_phuCap";
             this.txt_phuCap.Size = new System.Drawing.Size(132, 22);
             this.txt_phuCap.TabIndex = 18;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(320, 144);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(285, 144);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
+            this.button1.Size = new System.Drawing.Size(114, 28);
             this.button1.TabIndex = 19;
             this.button1.Text = "Thêm";
             this.button1.UseVisualStyleBackColor = true;
@@ -243,29 +243,31 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(456, 144);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(434, 144);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 28);
+            this.button2.Size = new System.Drawing.Size(118, 28);
             this.button2.TabIndex = 20;
             this.button2.Text = "Sửa";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(599, 144);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Location = new System.Drawing.Point(586, 144);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 28);
+            this.button3.Size = new System.Drawing.Size(111, 28);
             this.button3.TabIndex = 21;
             this.button3.Text = "Xóa";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(738, 144);
+            this.button4.Location = new System.Drawing.Point(734, 144);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(89, 28);
+            this.button4.Size = new System.Drawing.Size(129, 28);
             this.button4.TabIndex = 22;
             this.button4.Text = "Xuất excel";
             this.button4.UseVisualStyleBackColor = true;

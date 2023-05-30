@@ -30,7 +30,7 @@ namespace BTLCSharpxSql
             }
         }
 
-        private void btnThem_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             int sohoadon = int.Parse(txt_sohoadon.Text);
             string makhachhang = txt_makhachhang.Text;
@@ -51,7 +51,7 @@ namespace BTLCSharpxSql
             }
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             int sohoadon = int.Parse(txt_sohoadon.Text);
             string makhachhang = txt_makhachhang.Text;
@@ -72,7 +72,7 @@ namespace BTLCSharpxSql
             }
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
@@ -132,6 +132,5 @@ namespace BTLCSharpxSql
                 MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
     }
 }
