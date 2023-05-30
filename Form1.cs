@@ -43,12 +43,13 @@ namespace BTLCSharpxSql
             // Đặt màu viền cho button hiện tại
             if (currentButton != null)
             {
-                currentButton.FlatAppearance.BorderSize = 0;
+                currentButton.FlatAppearance.BorderSize = 1;
+                currentButton.FlatAppearance.BorderColor = Color.White;
             }
 
             currentButton = button;
             currentButton.FlatAppearance.BorderSize = 2;
-            currentButton.FlatAppearance.BorderColor = Color.DarkGreen;
+            currentButton.FlatAppearance.BorderColor = Color.DarkOrange;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
