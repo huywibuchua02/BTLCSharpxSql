@@ -265,7 +265,6 @@
     <Compile Include="frmNhanVien.Designer.cs">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="éc.cs" />
     <Compile Include="frmLoaiHang.cs">
       <SubType>Form</SubType>
     </Compile>
