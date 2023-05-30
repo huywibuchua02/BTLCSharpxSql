@@ -85,7 +85,7 @@ namespace BTLCSharpxSql
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            OpenChildForm(new frmChiTietDatHang(), button4);
+            OpenChildForm(new frmChiTietDonHang(), button4);
             label1.Text = button4.Text;
         }
 
