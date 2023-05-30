@@ -281,6 +281,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="FMatHang\QLmatHang.cs" />
+    <None Include="Resources\imresizer-1685456701824.png" />
+    <None Include="Resources\imresizer-1685456603383.png" />
+    <None Include="Resources\imresizer-1685456438723.png" />
     <EmbeddedResource Include="frmChiTietDatHang.resx">
       <DependentUpon>frmChiTietDatHang.cs</DependentUpon>
     </EmbeddedResource>

@@ -49,13 +49,14 @@ namespace BTLCSharpxSql
 
             currentButton = button;
             currentButton.FlatAppearance.BorderSize = 2;
-            currentButton.FlatAppearance.BorderColor = Color.DarkOrange;
+            currentButton.FlatAppearance.BorderColor = Color.White;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (currentFormChild != null)
             {
+                currentButton.FlatAppearance.BorderSize = 0;
                 currentFormChild.Close();
             }
 

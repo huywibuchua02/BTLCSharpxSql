@@ -98,24 +98,35 @@ namespace BTLCSharpxSql
             {
                 try
                 {
-                    Excel.Application excelApp = new Excel.Application();
-                    excelApp.Application.Workbooks.Add(Type.Missing);
+                    // Tạo đối tượng Excel
+                    Excel.Application excel = new Excel.Application();
+                    excel.Visible = true;
+                    Excel.Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+                    Excel.Worksheet sheet = (Excel.Worksheet)workbook.ActiveSheet;
 
-                    for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
-                    {
-                        excelApp.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
-                    }
+                    // Đặt tên các cột trong Excel
+                    sheet.Cells[1, 1] = "Số hóa đơn";
+                    sheet.Cells[1, 2] = "Mã hàng";
+                    sheet.Cells[1, 3] = "Giá bán";
+                    sheet.Cells[1, 4] = "Số lượng";
+                    sheet.Cells[1, 5] = "Mức giảm giá";
 
+                    // Đổ dữ liệu từ DataGridView vào Excel
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         for (int j = 0; j < dataGridView1.Columns.Count; j++)
                         {
-                            excelApp.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            if (dataGridView1.Rows[i].Cells[j].Value != null)
+                            {
+                                sheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            }
                         }
                     }
 
-                    excelApp.Columns.AutoFit();
-                    excelApp.Visible = true;
+                    // Lưu file Excel
+                    string savePath = @"D:\Excel\ChiTietDatHang.xlsx";
+                    workbook.SaveAs(savePath);
+                    MessageBox.Show("Xuất file Excel thành công! Đường dẫn: " + savePath);
                 }
                 catch (Exception ex)
                 {
@@ -124,9 +135,10 @@ namespace BTLCSharpxSql
             }
             else
             {
-                MessageBox.Show("Không có dữ liệu để xuất ra Excel", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

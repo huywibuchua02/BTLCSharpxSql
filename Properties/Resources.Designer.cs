@@ -123,6 +123,36 @@ namespace BTLCSharpxSql.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imresizer_1685456438723 {
+            get {
+                object obj = ResourceManager.GetObject("imresizer-1685456438723", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imresizer_1685456603383 {
+            get {
+                object obj = ResourceManager.GetObject("imresizer-1685456603383", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imresizer_1685456701824 {
+            get {
+                object obj = ResourceManager.GetObject("imresizer-1685456701824", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap loi_ich_thiet_ke_web {
             get {
                 object obj = ResourceManager.GetObject("loi-ich-thiet-ke-web", resourceCulture);
