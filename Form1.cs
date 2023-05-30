@@ -43,8 +43,8 @@ namespace BTLCSharpxSql
             // Đặt màu viền cho button hiện tại
             if (currentButton != null)
             {
-                currentButton.FlatAppearance.BorderSize = 1;
-                currentButton.FlatAppearance.BorderColor = Color.White;
+                currentButton.FlatAppearance.BorderSize = 0;
+/*                currentButton.FlatAppearance.BorderColor = Color.White;*/
             }
 
             currentButton = button;
