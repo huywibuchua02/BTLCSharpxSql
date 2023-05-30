@@ -1,33 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Data;
 
 namespace BTLCSharpxSql.FNhanVien
 {
     internal class Modify_NV
     {
         SqlDataAdapter dataAdapter; // Truy xuất dữ liệu vào bảng
-        SqlCommand sqlCommand; // Truy vấn cập nhật tới CSDL
 
-        public Modify_NV()
-        {
-        }
-
-        // Lấy tất cả nhân viên
         public DataTable GetAllNhanVien()
         {
             DataTable dataTable = new DataTable();
-            string query = "select * from nhanvien";
+            string query = "SELECT * FROM nhanvien";
             using (SqlConnection sqlConnection = connect.GetConnection())
             {
-                sqlConnection.Open();//mở kết nối
+                sqlConnection.Open();// Mở kết nối
 
                 dataAdapter = new SqlDataAdapter(query, sqlConnection);
-                //truy xuất 
+                // Truy xuất 
                 dataAdapter.Fill(dataTable);
 
                 sqlConnection.Close();
@@ -35,7 +24,27 @@ namespace BTLCSharpxSql.FNhanVien
             return dataTable;
         }
 
-        // Cập nhật thông tin nhân viên
+        private bool ExecuteNonQuery(SqlCommand command)
+        {
+            SqlConnection sqlConnection = connect.GetConnection();
+
+            try
+            {
+                command.Connection = sqlConnection;
+                sqlConnection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+        }
+
         public bool ExecuteStoredProc(string storedProcedure, QLNhanVien qLNhanVien)
         {
             SqlConnection sqlConnection = connect.GetConnection();
@@ -62,50 +71,23 @@ namespace BTLCSharpxSql.FNhanVien
             }
         }
 
-        // Thực thi non-query command
-        private bool ExecuteNonQuery(SqlCommand command)
-        {
-            SqlConnection sqlConnection = connect.GetConnection();
-
-            try
-            {
-                command.Connection = sqlConnection;
-                sqlConnection.Open();
-                command.ExecuteNonQuery();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-        }
-
-        // Thêm nhân viên
         public bool ThemNhanVien(QLNhanVien qLNhanVien)
         {
             return ExecuteStoredProc("sp_nhanvien_them", qLNhanVien);
         }
 
-        // Sửa thông tin nhân viên
         public bool SuaThongTinNhanVien(QLNhanVien qLNhanVien)
         {
             return ExecuteStoredProc("sp_nhanvien_sua", qLNhanVien);
         }
 
-        // Xóa nhân viên
         public bool XoaNhanVien(string manhanvien)
         {
             SqlConnection sqlConnection = connect.GetConnection();
 
-            string query = "sp_nhanvien_xoa";
-
             try
             {
-                SqlCommand command = new SqlCommand(query, sqlConnection);
+                SqlCommand command = new SqlCommand("sp_nhanvien_xoa", sqlConnection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add("@manhanvien", SqlDbType.NVarChar).Value = manhanvien;
 
@@ -114,6 +96,10 @@ namespace BTLCSharpxSql.FNhanVien
             catch
             {
                 return false;
+            }
+            finally
+            {
+                sqlConnection.Close();
             }
         }
     }
