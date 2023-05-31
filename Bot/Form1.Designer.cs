@@ -1,4 +1,8 @@
-﻿namespace Bot
+﻿using static System.Net.Mime.MediaTypeNames;
+using System.Drawing.Printing;
+using System.Windows.Forms;
+
+namespace Bot
 {
     partial class Form1
     {
@@ -28,54 +32,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            cmd1 = new Button();
             txtLog = new TextBox();
-            txt1 = new TextBox();
             SuspendLayout();
-            // 
-            // cmd1
-            // 
-            cmd1.Location = new Point(662, 369);
-            cmd1.Name = "cmd1";
-            cmd1.Size = new Size(111, 55);
-            cmd1.TabIndex = 0;
-            cmd1.Text = "button1";
-            cmd1.UseVisualStyleBackColor = true;
             // 
             // txtLog
             // 
-            txtLog.Location = new Point(12, 21);
+            txtLog.Location = new Point(134, 145);
+            txtLog.Margin = new Padding(3, 4, 3, 4);
             txtLog.Multiline = true;
             txtLog.Name = "txtLog";
-            txtLog.Size = new Size(776, 291);
-            txtLog.TabIndex = 1;
-            // 
-            // txt1
-            // 
-            txt1.Location = new Point(12, 383);
-            txt1.Name = "txt1";
-            txt1.Size = new Size(520, 27);
-            txt1.TabIndex = 2;
+            txtLog.Size = new Size(454, 352);
+            txtLog.TabIndex = 0;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(txt1);
+            ClientSize = new Size(914, 600);
             Controls.Add(txtLog);
-            Controls.Add(cmd1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
-            Load += Form1_Load;
+            Load += Form1_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button cmd1;
         private TextBox txtLog;
-        private TextBox txt1;
     }
 }

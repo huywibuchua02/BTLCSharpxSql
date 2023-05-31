@@ -2,7 +2,6 @@
 using System.Data;
 using System.Data.SqlTypes;
 using System.Windows.Forms;
-using BTLCSharpxSql.FMatHang;
 using BTLCSharpxSql.FNhaCungCap;
 using Excel = Microsoft.Office.Interop.Excel;
 
